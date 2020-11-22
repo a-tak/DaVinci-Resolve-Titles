@@ -1,6 +1,6 @@
 {
 	Tools = ordered() {
-		["ペルソナテロップ4"] = MacroOperator {
+		["ペルソナテロップ"] = MacroOperator {
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "テロップ",
@@ -210,5 +210,5 @@
 			},
 		}
 	},
-	ActiveTool = "ペルソナテロップ4"
+	ActiveTool = "ペルソナテロップ"
 }

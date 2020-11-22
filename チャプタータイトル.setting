@@ -1,6 +1,6 @@
 {
 	Tools = ordered() {
-		["チャプタータイトル7"] = MacroOperator {
+		["チャプタータイトル"] = MacroOperator {
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "左文字",
@@ -470,5 +470,5 @@
 			},
 		}
 	},
-	ActiveTool = "チャプタータイトル7"
+	ActiveTool = "チャプタータイトル"
 }
