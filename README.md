@@ -8,6 +8,9 @@ DaVinci ResolveのFusionで作成したEditページ用テンプレートです
 
 `(インストールドライブ):\Users\(ユーザー名)\AppData\Roaming\Blackmagic Design\DaVinci Resolve\Support\Fusion\Templates\Edit\Titles` へsettingファイルをコピーしてDaVinci Resolveを再起動すると、カットやエディットページに各タイトルが表示されます。
 
+## お手軽に確認する方法
+
+Fusionコンポジションつくって、settingのテキストの内容をノードでctrl + Vで貼り付けすることもできます。
 
 ## リストタイトル
 
