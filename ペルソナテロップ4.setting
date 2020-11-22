@@ -1,0 +1,214 @@
+{
+	Tools = ordered() {
+		["ペルソナテロップ4"] = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "テロップ",
+					Source = "StyledText",
+					Name = "テロップ",
+				},
+			},
+			Outputs = {
+				Output1 = InstanceOutput {
+					SourceOp = "Path1",
+					Source = "Heading",
+				},
+				MainOutput1 = InstanceOutput {
+					SourceOp = "MediaOut1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				["吹き出し"] = Paint {
+					NameSet = true,
+					Inputs = {
+						Input = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Paint = Input {
+							SourceOp = "Fill1",
+							Source = "Out",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, 49.5 } },
+				},
+				Fill1 = Fill {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.492652209719384, 0.4552239060995 }, },
+						Paint = Input {
+							SourceOp = "PolylineStroke1",
+							Source = "Out",
+						},
+					},
+				},
+				PolylineStroke1 = PolylineStroke {
+					Points = {
+					},
+					IsThreaded = true,
+					Brushes = { "RectBrush" },
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						["ImageBrush.Brush"] = Input { UserString1 = "ball_metal", },
+						BrushControls = Input { Value = 1, },
+						BrushShape = Input { Value = FuID { "RectBrush" }, },
+						["RectBrush.Size"] = Input { Value = 0.0024, },
+						StrokeControls = Input { Value = 1, },
+						Center = Input { Value = { 0.488803358992302, 0.390547263681592 }, },
+						Polyline = Input {
+							SourceOp = "Perturb1",
+							Source = "Value",
+						},
+					},
+				},
+				Perturb1 = PerturbPolyLine {
+					CtrlWZoom = false,
+					Inputs = {
+						Value = Input {
+							Value = Polyline {
+								Closed = true,
+								Points = {
+									{ Linear = true, X = 0.519222706424162, Y = 0.131840789866685, LX = -0.00235553477996564, LY = -0.0415172791298615, RX = -0.26280883551967, RY = -0.0139561035492256 },
+									{ Linear = true, X = -0.356806710497789, Y = 0.0853204465511519, LX = 0.26280883551967, LY = 0.0139561035492256, RX = 0.00780513621026648, RY = -0.0369454320665236 },
+									{ Linear = true, X = -0.330789590830729, Y = -0.0378309887769952, LX = -0.00780513621026648, LY = 0.0369454320665236, RX = 0.252883717923194, RY = 0.0135359829141002 },
+									{ Linear = true, X = 0.512156102084265, Y = 0.00728895247710027, LX = -0.252883717923194, LY = -0.0135359829141002, RX = 0.00235553477996564, RY = 0.0415172791298615 }
+								}
+							},
+						},
+						Phase = Input { Value = 0.5, },
+						RandomSeed = Input { Value = 3921, },
+						Strength = Input { Value = 0.031, },
+						Wobble = Input { Value = 1.11, },
+						Speed = Input { Value = 3.03, },
+					},
+				},
+				["スライドイン"] = Transform {
+					NameSet = true,
+					Inputs = {
+						Center = Input {
+							SourceOp = "Path1",
+							Source = "Position",
+						},
+						Input = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, 82.5 } },
+				},
+				Path1 = PolyPath {
+					DrawMode = "InsertAndModify",
+					CtrlWZoom = false,
+					Inputs = {
+						Displacement = Input {
+							SourceOp = "Path1Displacement",
+							Source = "Value",
+						},
+						PolyLine = Input {
+							Value = Polyline {
+								Points = {
+									{ Linear = true, LockY = true, X = 0.860748, Y = 0.473034, RX = -0.236916, RY = -3.70074341541719e-17 },
+									{ Linear = true, LockY = true, X = 0.15, Y = 0.473034, LX = 0.236916, LY = 3.70074341541719e-17, RX = 0, RY = 0 },
+									{ Linear = true, LockY = true, X = 0.15, Y = 0.473034, LX = 0, LY = 0, RX = 0.244087666666667, RY = 0 },
+									{ Linear = true, LockY = true, X = 0.882263, Y = 0.473034, LX = -0.244087666666667, LY = 0 }
+								}
+							},
+						},
+					},
+				},
+				Path1Displacement = BezierSpline {
+					SplineColor = { Red = 255, Green = 0, Blue = 255 },
+					KeyFrames = {
+						[0] = { 0, RH = { 17.3, 0 }, Flags = { LockedY = true } },
+						[24] = { 0.49254510187379, LH = { 6, 0.492133675235636 }, RH = { 32, 0.49254510187379 }, Flags = { LockedY = true } },
+						[48] = { 0.49254510187379, LH = { 40, 0.49254510187379 }, RH = { 67.55, 0.494225416105996 }, Flags = { Linear = true, LockedY = true } },
+						[71] = { 1, LH = { 53.55, 1 }, Flags = { LockedY = true } }
+					}
+				},
+				KeyframeStretcher1 = KeyStretcher {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "スライドイン",
+							Source = "Output",
+						},
+						SourceEnd = Input { Value = 71, },
+						StretchStart = Input { Value = 25, },
+						StretchEnd = Input { Value = 47, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 495, 82.5 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "吹き出し",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "テロップ",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, 115.5 } },
+				},
+				["テロップ"] = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Center = Input { Value = { 0.186440677966101, 0.434755332496863 }, },
+						Red1 = Input { Value = 0, },
+						Green1 = Input { Value = 0, },
+						Blue1 = Input { Value = 0, },
+						StyledText = Input { Value = "ここにテロップ入れる", },
+						Font = Input { Value = "A-OTF Jun Pro", },
+						Style = Input { Value = "101", },
+						Size = Input { Value = 0.0315, },
+						VerticalJustificationNew = Input { Value = 3, },
+						HorizontalLeftCenterRight = Input { Value = -1, },
+						HorizontalJustificationNew = Input { Value = 3, },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 115.5 } },
+				},
+				MediaOut1 = MediaOut {
+					CtrlWZoom = false,
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, 82.5 } },
+				},
+				Background1 = Background {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 49.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "ペルソナテロップ4"
+}

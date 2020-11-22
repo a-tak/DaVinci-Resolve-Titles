@@ -1,0 +1,246 @@
+{
+	Tools = ordered() {
+		["リストタイトル"] = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "文字消し",
+					Source = "Center",
+					Name = "文字消しマスク位置",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "文字",
+					Source = "StyledText",
+					Name = "文字",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "文字",
+					Source = "Font",
+					Name = "フォント",
+					ControlGroup = 3,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "文字",
+					Source = "Size",
+					Name = "文字サイズ",
+					Default = 0.0503,
+				},
+			},
+			Outputs = {
+				Output1 = InstanceOutput {
+					SourceOp = "Path1",
+					Source = "Heading",
+				},
+				MainOutput1 = InstanceOutput {
+					SourceOp = "MediaOut1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Merge1 = Merge {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "文字消し",
+							Source = "Output",
+						},
+						Background = Input {
+							SourceOp = "四角",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "文字",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 49.5 } },
+				},
+				["スライドインアウト"] = Transform {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						Center = Input {
+							SourceOp = "Path1",
+							Source = "Position",
+						},
+						Input = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 220, 49.5 } },
+				},
+				Path1 = PolyPath {
+					DrawMode = "InsertAndModify",
+					CtrlWZoom = false,
+					Inputs = {
+						Displacement = Input {
+							SourceOp = "Path1Displacement",
+							Source = "Value",
+						},
+						PolyLine = Input {
+							Value = Polyline {
+								Points = {
+									{ Linear = true, LockY = true, X = -0.711821329979872, Y = 0, RX = 0.234509436646136, RY = 0 },
+									{ Linear = true, LockY = true, X = -0.00829302004146509, Y = 0, LX = -0.234509436646136, LY = 0, RX = 0, RY = 0 },
+									{ Linear = true, LockY = true, X = -0.00829301960766315, Y = 0, LX = -0, LY = -0, RX = -0.242256134625462, RY = 0 },
+									{ Linear = true, LockY = true, X = -0.73506142348405, Y = 0, LX = 0.242256134625462, LY = 0 }
+								}
+							},
+						},
+					},
+				},
+				Path1Displacement = BezierSpline {
+					SplineColor = { Red = 255, Green = 0, Blue = 255 },
+					KeyFrames = {
+						[0] = { 0, RH = { 12.6, 0 }, Flags = { LockedY = true } },
+						[15] = { 0.491875778741043, LH = { 2.4, 0.492601259468357 }, RH = { 25, 0.491875778741043 }, Flags = { LockedY = true } },
+						[45] = { 0.491875778741043, LH = { 35, 0.491875778741043 }, RH = { 57.4, 0.492623020476731 }, Flags = { Linear = true, LockedY = true } },
+						[60] = { 1, LH = { 47.8, 1 }, Flags = { LockedY = true } }
+					}
+				},
+				["文字消し"] = Transform {
+					NameSet = true,
+					Inputs = {
+						Input = Input {
+							SourceOp = "文字マスク",
+							Source = "Mask",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 82.5 } },
+				},
+				["文字"] = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Center = Input { Value = { 0.0304347826086957, 0.458762886597938 }, },
+						Red1 = Input { Value = 0.1137254901961, },
+						Green1 = Input { Value = 0.1137254901961, },
+						Blue1 = Input { Value = 0.1137254901961, },
+						StyledText = Input { Value = "男の心 3条\n①男はだまってやせ我慢\n②早寝早起き\n③宵越しの金はもたない\n④ここはめちゃ長く書く、長く長く", },
+						Font = Input { Value = "A-OTF Futo Go B101 Pr6N", },
+						Style = Input { Value = "Bold", },
+						Size = Input { Value = 0.0503, },
+						VerticalJustificationNew = Input { Value = 3, },
+						HorizontalLeftCenterRight = Input { Value = -1, },
+						HorizontalJustificationNew = Input { Value = 3, },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 49.5 } },
+				},
+				["四角"] = Paint {
+					NameSet = true,
+					Inputs = {
+						Input = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Paint = Input {
+							SourceOp = "Rectangle2",
+							Source = "Out",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, -16.5 } },
+				},
+				Rectangle2 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					CtrlWZoom = false,
+					Inputs = {
+						Center = Input { Value = { 0.450072556734085, 0.569343090057373 }, },
+						Paint = Input {
+							SourceOp = "Rectangle1",
+							Source = "Out",
+						},
+						Width = Input { Value = 0.1513186097145, },
+					},
+				},
+				Rectangle1 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.346402206730206, 0.438574932515621 }, },
+						Width = Input { Value = 0.701, },
+						Height = Input { Value = 0.5823095589876, },
+						["PaintApplyColor.Opacity"] = Input { Value = 0.759, },
+					},
+				},
+				["文字マスク"] = PaintMask {
+					NameSet = true,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "None" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Paint = Input {
+							SourceOp = "Rectangle3",
+							Source = "Out",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 115.5 } },
+				},
+				Rectangle3 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.3464022067302, 0.4385749325156 }, },
+						Width = Input { Value = 0.701, },
+						Height = Input { Value = 0.5823095589876, },
+					},
+				},
+				MediaOut1 = MediaOut {
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 440, 49.5 } },
+				},
+				KeyframeStretcher1 = KeyStretcher {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "スライドインアウト",
+							Source = "Output",
+						},
+						SourceEnd = Input { Value = 60, },
+						StretchStart = Input { Value = 16, },
+						StretchEnd = Input { Value = 44, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 330, 49.5 } },
+				},
+				Background1 = Background {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, -16.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "リストタイトル"
+}
