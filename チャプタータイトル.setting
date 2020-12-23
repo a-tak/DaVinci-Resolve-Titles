@@ -40,7 +40,7 @@
 					SourceOp = "半透明度指定用マージ",
 					Source = "Blend",
 					Name = "不透明度",
-					Default = 0,
+					Default = 0.8,
 				},
 			},
 			Outputs = {
@@ -87,7 +87,7 @@
 				["半透明度指定用マージ"] = Merge {
 					NameSet = true,
 					Inputs = {
-						Blend = Input { Value = 0, },
+						Blend = Input { Value = 0.8, },
 						Background = Input {
 							SourceOp = "透明背景",
 							Source = "Output",
