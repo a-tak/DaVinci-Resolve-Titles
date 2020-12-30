@@ -1,6 +1,6 @@
 {
 	Tools = ordered() {
-		["チャプタータイトル"] = MacroOperator {
+		["チャプタータイトル24FPS"] = MacroOperator {
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "左文字",
@@ -59,6 +59,18 @@
 			},
 			ViewInfo = GroupInfo { Pos = { 0, 0 } },
 			Tools = ordered() {
+				KeyframeStretcher1 = KeyStretcher {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "左上配置",
+							Source = "Output",
+						},
+						SourceEnd = Input { Value = 72, },
+						StretchStart = Input { Value = 35, },
+						StretchEnd = Input { Value = 37, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 16.5 } },
+				},
 				MediaOut1 = MediaOut {
 					CtrlWZoom = false,
 					Inputs = {
@@ -68,7 +80,190 @@
 							Source = "Result",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 715, 115.5 } },
+					ViewInfo = OperatorInfo { Pos = { 110, 16.5 } },
+				},
+				["文字ライン縮小"] = Transform {
+					NameSet = true,
+					Inputs = {
+						Size = Input { Value = 0.9, },
+						Input = Input {
+							SourceOp = "Merge2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -330, 16.5 } },
+				},
+				["不透明背景"] = Background {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input {
+							SourceOp = "不透明背景TopLeftRed",
+							Source = "Value",
+						},
+						TopLeftGreen = Input {
+							SourceOp = "不透明背景TopLeftGreen",
+							Source = "Value",
+						},
+						TopLeftBlue = Input {
+							SourceOp = "不透明背景TopLeftBlue",
+							Source = "Value",
+						},
+						TopLeftAlpha = Input {
+							SourceOp = "不透明背景TopLeftAlpha",
+							Source = "Value",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -330, 49.5 } },
+				},
+				["不透明背景TopLeftRed"] = BezierSpline {
+					SplineColor = { Red = 255, Green = 0, Blue = 0 },
+					KeyFrames = {
+						[120] = { 0, Flags = { Linear = true } }
+					}
+				},
+				["不透明背景TopLeftGreen"] = BezierSpline {
+					SplineColor = { Red = 0, Green = 255, Blue = 0 },
+					KeyFrames = {
+						[120] = { 0, Flags = { Linear = true } }
+					}
+				},
+				["不透明背景TopLeftBlue"] = BezierSpline {
+					SplineColor = { Red = 0, Green = 0, Blue = 255 },
+					KeyFrames = {
+						[120] = { 0, Flags = { Linear = true } }
+					}
+				},
+				["不透明背景TopLeftAlpha"] = BezierSpline {
+					SplineColor = { Red = 180, Green = 180, Blue = 180 },
+					KeyFrames = {
+						[0] = { 0, RH = { 20, 0 } },
+						[60] = { 1, LH = { 38, 1 }, RH = { 83.6152346164006, 1 } },
+						[120] = { 1, LH = { 96.3847653835994, 0.999999999999998 }, RH = { 141.2, 1 } },
+						[180] = { 0, LH = { 160, 0 } }
+					}
+				},
+				MaskPaint2 = PaintMask {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "ラインマスク",
+							Source = "Mask",
+						},
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "None" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Paint = Input {
+							SourceOp = "Rectangle6",
+							Source = "Out",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -330, -16.5 } },
+				},
+				Rectangle6 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Paint = Input {
+							SourceOp = "Rectangle5",
+							Source = "Out",
+						},
+					},
+				},
+				Rectangle5 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.74485981464386, 0.506644539302215 }, },
+						Width = Input { Value = 0.4803738594055, },
+						Height = Input { Value = 1.019934, },
+					},
+				},
+				MaskPaint1 = PaintMask {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "ラインマスク",
+							Source = "Mask",
+						},
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "None" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Paint = Input {
+							SourceOp = "Rectangle4",
+							Source = "Out",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -330, -49.5 } },
+				},
+				Rectangle4 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Paint = Input {
+							SourceOp = "Rectangle3",
+							Source = "Out",
+						},
+					},
+				},
+				Rectangle3 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.252604166666667, 0.500000000931323 }, },
+						Paint = Input {
+							SourceOp = "Rectangle2",
+							Source = "Out",
+						},
+						Width = Input { Value = 0.4822429772466, },
+						Height = Input { Value = 0.9734219294041, },
+					},
+				},
+				Rectangle2 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.273183586975373, 0.512390806470756 }, },
+						Width = Input { Value = 0.441121481359, },
+						Height = Input { Value = 0.7774086520076, },
+					},
+				},
+				["ライン"] = Background {
+					NameSet = true,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 1, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 1, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -440, -82.5 } },
 				},
 				Merge1 = Merge {
 					Inputs = {
@@ -82,12 +277,12 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 385, 115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -220, 16.5 } },
 				},
 				["半透明度指定用マージ"] = Merge {
 					NameSet = true,
 					Inputs = {
-						Blend = Input { Value = 0.8, },
+						Blend = Input { Value = 0, },
 						Background = Input {
 							SourceOp = "透明背景",
 							Source = "Output",
@@ -98,93 +293,19 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 385, 148.5 } },
+					ViewInfo = OperatorInfo { Pos = { -220, 49.5 } },
 				},
-				Merge2 = Merge {
-					Inputs = {
-						EffectMask = Input {
-							SourceOp = "MaskPaint2",
-							Source = "Mask",
-						},
-						Background = Input {
-							SourceOp = "Merge3",
-							Source = "Output",
-						},
-						Foreground = Input {
-							SourceOp = "右文字",
-							Source = "Output",
-						},
-						PerformDepthMerge = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 55, 82.5 } },
-				},
-				Merge3 = Merge {
-					Inputs = {
-						EffectMask = Input {
-							SourceOp = "MaskPaint1",
-							Source = "Mask",
-						},
-						Background = Input {
-							SourceOp = "Background1",
-							Source = "Output",
-						},
-						Foreground = Input {
-							SourceOp = "左文字",
-							Source = "Output",
-						},
-						PerformDepthMerge = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 55, 49.5 } },
-				},
-				["ライン"] = Paint {
+				["透明背景"] = Background {
 					NameSet = true,
 					Inputs = {
-						Input = Input {
-							SourceOp = "Merge2",
-							Source = "Output",
-						},
-						Paint = Input {
-							SourceOp = "Rectangle1",
-							Source = "Out",
-						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 220, 82.5 } },
-				},
-				Rectangle1 = Rectangle {
-					IsThreaded = true,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					CtrlWZoom = false,
-					Inputs = {
-						MotionBlur = Input { Value = 1, },
-						Center = Input { Value = { 0.5, 0.501196628522209 }, },
-						Width = Input { Value = 0.015228420496, },
-						Height = Input {
-							SourceOp = "Rectangle1Height",
-							Source = "Value",
-						},
-					},
-				},
-				Rectangle1Height = BezierSpline {
-					SplineColor = { Red = 0, Green = 255, Blue = 255 },
-					KeyFrames = {
-						[0] = { 0, RH = { 11.6, 0 } },
-						[20] = { 1, LH = { 4.8, 1 }, RH = { 29.6666666666667, 1 } },
-						[49] = { 1, LH = { 39.3333333333333, 1 }, RH = { 61.8, 1 }, Flags = { Linear = true, Loop = true, LoopRel = true } },
-						[69] = { 0, LH = { 52.8, 0.00999999999999999 }, Flags = { Loop = true, LoopRel = true } }
-					}
-				},
-				["文字ライン縮小"] = Transform {
-					NameSet = true,
-					Inputs = {
-						Size = Input { Value = 0.9, },
-						Input = Input {
-							SourceOp = "ライン",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 330, 82.5 } },
+					ViewInfo = OperatorInfo { Pos = { -220, 82.5 } },
 				},
 				["右文字"] = TextPlus {
 					NameSet = true,
@@ -212,7 +333,7 @@
 							},
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -55, 82.5 } },
+					ViewInfo = OperatorInfo { Pos = { -550, -16.5 } },
 				},
 				Path2 = PolyPath {
 					DrawMode = "InsertAndModify",
@@ -225,10 +346,11 @@
 						PolyLine = Input {
 							Value = Polyline {
 								Points = {
-									{ Linear = true, LockY = true, X = -0.297233, Y = -0.0265780730897, RX = 0.184999894355867, RY = 2.10400001819192e-10 },
-									{ Linear = true, LockY = true, X = 0.2577666830676, Y = -0.0265780724585, LX = -0.184999894355867, LY = -2.10400001819192e-10, RX = 0, RY = 0 },
-									{ Linear = true, LockY = true, X = 0.2577666830676, Y = -0.0265780724585, LX = 0, LY = 0, RX = -0.184999894355867, RY = -6.93889390390723e-18 },
-									{ Linear = true, LockY = true, X = -0.297233, Y = -0.0265780724585, LX = 0.184999894355867, LY = 6.93889390390723e-18 }
+									{ Linear = true, LockY = true, X = -0.297233, Y = -0.0265780730897, RX = 0, RY = 0 },
+									{ Linear = true, LockY = true, X = -0.297232985496521, Y = -0.0265780724585056, LX = 0, LY = 0, RX = 0.188226967387729, RY = -2.10398124848391e-10 },
+									{ Linear = true, LockY = true, X = 0.267447916666667, Y = -0.0265780730897, LX = -0.188226967387729, LY = 2.10398124848391e-10, RX = 0, RY = 0 },
+									{ Linear = true, LockY = true, X = 0.267447918653488, Y = -0.0265780724585056, LX = 0, LY = 0, RX = -0.19713541732894, RY = -2.10398124848391e-10 },
+									{ Linear = true, LockY = true, X = -0.323958333333333, Y = -0.0265780730897, LX = 0.19713541732894, LY = 2.10398124848391e-10 }
 								}
 							},
 						},
@@ -237,10 +359,34 @@
 				Path2Displacement = BezierSpline {
 					SplineColor = { Red = 255, Green = 0, Blue = 255 },
 					KeyFrames = {
-						[10] = { 0, RH = { 24.6, 0 }, Flags = { LockedY = true } },
-						[30] = { 0.5, LH = { 10.2, 0.5 }, RH = { 31.6666666666667, 0.5 }, Flags = { LockedY = true } },
-						[35] = { 0.5, LH = { 33.3333333333333, 0.5 }, RH = { 52.6, 0.5 }, Flags = { Linear = true, LockedY = true } },
-						[55] = { 1, LH = { 38.8, 1 }, Flags = { LockedY = true } }
+						[10] = { 0, RH = { 10, 0 }, Flags = { LockedY = true } },
+						[10.000000001] = { 0, LH = { 10, 0 }, RH = { 21.76, 0 }, Flags = { LockedY = true }, offset = 1e-09 },
+						[34] = { 0.488441464067957, LH = { 22.12, 0.488176585627183 }, RH = { 35.5520413935741, 0.48847606863903 }, Flags = { LockedY = true } },
+						[38] = { 0.488441464067957, LH = { 36.4283732172023, 0.48847419127328 }, RH = { 50.72, 0.488176585627183 }, Flags = { LockedY = true } },
+						[62] = { 1, LH = { 50.24, 1 }, Flags = { LockedY = true } }
+					}
+				},
+				Transform1 = Transform {
+					Inputs = {
+						UseSizeAndAspect = Input { Value = 0, },
+						YSize = Input {
+							SourceOp = "Transform1YSize",
+							Source = "Value",
+						},
+						Input = Input {
+							SourceOp = "ラインマスク",
+							Source = "Mask",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -440, -115.5 } },
+				},
+				Transform1YSize = BezierSpline {
+					SplineColor = { Red = 252, Green = 91, Blue = 43 },
+					KeyFrames = {
+						[0] = { 0, RH = { 12.0558981756556, 0 } },
+						[24] = { 1, LH = { 13.04, 1 }, RH = { 31.9991998672485, 1 } },
+						[48] = { 1, LH = { 40.0008001327516, 1 }, RH = { 60.32, 1 } },
+						[72] = { 0, LH = { 60.48, 0 } }
 					}
 				},
 				["左文字"] = TextPlus {
@@ -270,11 +416,10 @@
 							},
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -55, 49.5 } },
+					ViewInfo = OperatorInfo { Pos = { -550, -49.5 } },
 				},
 				Path1 = PolyPath {
 					DrawMode = "InsertAndModify",
-					CtrlWZoom = false,
 					Inputs = {
 						Displacement = Input {
 							SourceOp = "Path1Displacement",
@@ -283,11 +428,10 @@
 						PolyLine = Input {
 							Value = Polyline {
 								Points = {
-									{ Linear = true, LockY = true, X = 0.3125, Y = 0, RX = -0.191394080996885, RY = 0 },
-									{ Linear = true, LockY = true, X = -0.261682242990654, Y = 0, LX = 0.191394080996885, LY = 0, RX = 0.00149381782181801, RY = 0 },
-									{ Linear = true, LockY = true, X = -0.2572007895252, Y = 0, LX = -0.00149381782181801, LY = 0, RX = 0, RY = 0 },
-									{ Linear = true, LockY = true, X = -0.2572007895252, Y = 0, LX = 0, LY = 0, RX = 0.189900263175067, RY = 0 },
-									{ Linear = true, LockY = true, X = 0.3125, Y = 0, LX = -0.189900263175067, LY = 0 }
+									{ Linear = true, LockY = true, X = 0.332552083333333, Y = 0, RX = -0.195746527777778, RY = 0 },
+									{ Linear = true, LockY = true, X = -0.2546875, Y = 0, LX = 0.195746527777778, LY = 0, RX = 0, RY = 0 },
+									{ Linear = true, LockY = true, X = -0.2546875, Y = 0, LX = 0, LY = 0, RX = 0.201649305555556, RY = 0 },
+									{ Linear = true, LockY = true, X = 0.350260416666667, Y = 0, LX = -0.201649305555556, LY = 0 }
 								}
 							},
 						},
@@ -296,47 +440,75 @@
 				Path1Displacement = BezierSpline {
 					SplineColor = { Red = 255, Green = 0, Blue = 255 },
 					KeyFrames = {
-						[5] = { 0, RH = { 23.4, 0 }, Flags = { LockedY = true } },
-						[25] = { 0.5, LH = { 9.6, 0.499999999586079 }, RH = { 25.0000000003333, 0.501300822029986 }, Flags = { LockedY = true } },
-						[25.000000001] = { 0.503902466089958, LH = { 25.0000000006667, 0.502601644059972 }, RH = { 30, 0.503902466089958 }, Flags = { Linear = true, LockedY = true }, offset = 1e-09 },
-						[40] = { 0.503902466089958, LH = { 35, 0.503902466089958 }, RH = { 52.8, 0.512 }, Flags = { Linear = true, LockedY = true } },
-						[60] = { 1, LH = { 40.6, 1 }, Flags = { LockedY = true } }
+						[5] = { 0, RH = { 19.88, 0 }, Flags = { LockedY = true } },
+						[29] = { 0.492573176059414, LH = { 17.24, 0.492229270423766 }, RH = { 34.3482483416396, 0.492573176059414 }, Flags = { LockedY = true } },
+						[43] = { 0.492573176059414, LH = { 37.8586120059331, 0.492573176059414 }, RH = { 52.6, 0.498862259727575 }, Flags = { LockedY = true } },
+						[67] = { 1, LH = { 55.96, 1 }, Flags = { LockedY = true } }
 					}
 				},
-				KeyframeStretcher1 = KeyStretcher {
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "左上配置",
-							Source = "Output",
-						},
-						SourceEnd = Input { Value = 69, },
-						StretchStart = Input { Value = 31, },
-						StretchEnd = Input { Value = 34, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 605, 115.5 } },
-				},
-				["不透明背景"] = Background {
+				["ラインマスク"] = PaintMask {
 					NameSet = true,
 					Inputs = {
-						Width = Input { Value = 1920, },
-						Height = Input { Value = 1080, },
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "None" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
 						UseFrameFormatSettings = Input { Value = 1, },
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						TopLeftAlpha = Input {
-							SourceOp = "不透明背景TopLeftAlpha",
-							Source = "Value",
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Paint = Input {
+							SourceOp = "Rectangle1",
+							Source = "Out",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 275, 148.5 } },
+					ViewInfo = OperatorInfo { Pos = { -220, -115.5 } },
 				},
-				["不透明背景TopLeftAlpha"] = BezierSpline {
-					SplineColor = { Red = 180, Green = 180, Blue = 180 },
-					KeyFrames = {
-						[0] = { 0, RH = { 11.4, 0 } },
-						[20] = { 1, LH = { 6.6, 1 }, RH = { 30, 1 } },
-						[50] = { 1, LH = { 40, 1 }, RH = { 60.6, 1 }, Flags = { Linear = true } },
-						[70] = { 0, LH = { 52.8, 0 } }
-					}
+				Rectangle1 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.5, 0.498611111111111 }, },
+						Width = Input { Value = 0.0122819542885, },
+						Height = Input { Value = 1, },
+					},
+				},
+				Merge3 = Merge {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "MaskPaint1",
+							Source = "Mask",
+						},
+						Background = Input {
+							SourceOp = "ライン",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "左文字",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -440, -49.5 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "MaskPaint2",
+							Source = "Mask",
+						},
+						Background = Input {
+							SourceOp = "Merge3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "右文字",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -440, -16.5 } },
 				},
 				["左上配置"] = Transform {
 					NameSet = true,
@@ -348,127 +520,10 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 495, 115.5 } },
-				},
-				Background1 = Background {
-					Inputs = {
-						Width = Input { Value = 1920, },
-						Height = Input { Value = 1080, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						TopLeftAlpha = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { -55, -16.5 } },
-				},
-				["透明背景"] = Background {
-					NameSet = true,
-					Inputs = {
-						Width = Input { Value = 1920, },
-						Height = Input { Value = 1080, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						Depth = Input { Value = 1, },
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						TopLeftAlpha = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 385, 181.5 } },
-				},
-				MaskPaint2 = PaintMask {
-					Inputs = {
-						Filter = Input { Value = FuID { "Fast Gaussian" }, },
-						PaintMode = Input { Value = FuID { "None" }, },
-						MaskWidth = Input { Value = 1920, },
-						MaskHeight = Input { Value = 1080, },
-						PixelAspect = Input { Value = { 1, 1 }, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						ClippingMode = Input { Value = FuID { "None" }, },
-						Paint = Input {
-							SourceOp = "Rectangle6",
-							Source = "Out",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 55, 148.5 } },
-				},
-				Rectangle6 = Rectangle {
-					IsThreaded = false,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					CtrlWZoom = false,
-					Inputs = {
-						Paint = Input {
-							SourceOp = "Rectangle5",
-							Source = "Out",
-						},
-					},
-				},
-				Rectangle5 = Rectangle {
-					IsThreaded = false,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					Inputs = {
-						Center = Input { Value = { 0.74485981464386, 0.506644539302215 }, },
-						Width = Input { Value = 0.4803738594055, },
-						Height = Input { Value = 1.019934, },
-					},
-				},
-				MaskPaint1 = PaintMask {
-					Inputs = {
-						Filter = Input { Value = FuID { "Fast Gaussian" }, },
-						PaintMode = Input { Value = FuID { "None" }, },
-						MaskWidth = Input { Value = 1920, },
-						MaskHeight = Input { Value = 1080, },
-						PixelAspect = Input { Value = { 1, 1 }, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						ClippingMode = Input { Value = FuID { "None" }, },
-						Paint = Input {
-							SourceOp = "Rectangle4",
-							Source = "Out",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 55, -16.5 } },
-				},
-				Rectangle4 = Rectangle {
-					IsThreaded = false,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					CtrlWZoom = false,
-					Inputs = {
-						Paint = Input {
-							SourceOp = "Rectangle3",
-							Source = "Out",
-						},
-					},
-				},
-				Rectangle3 = Rectangle {
-					IsThreaded = false,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					Inputs = {
-						Center = Input { Value = { 0.25046728271991, 0.500000000931323 }, },
-						Paint = Input {
-							SourceOp = "Rectangle2",
-							Source = "Out",
-						},
-						Width = Input { Value = 0.4822429772466, },
-						Height = Input { Value = 0.9734219294041, },
-					},
-				},
-				Rectangle2 = Rectangle {
-					IsThreaded = false,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					Inputs = {
-						Center = Input { Value = { 0.271028030663729, 0.504983399063349 }, },
-						Width = Input { Value = 0.441121481359, },
-						Height = Input { Value = 0.7774086520076, },
-					},
+					ViewInfo = OperatorInfo { Pos = { -110, 16.5 } },
 				}
 			},
 		}
 	},
-	ActiveTool = "チャプタータイトル"
+	ActiveTool = "チャプタータイトル24FPS"
 }
