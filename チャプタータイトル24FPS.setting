@@ -59,29 +59,6 @@
 			},
 			ViewInfo = GroupInfo { Pos = { 0, 0 } },
 			Tools = ordered() {
-				KeyframeStretcher1 = KeyStretcher {
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "左上配置",
-							Source = "Output",
-						},
-						SourceEnd = Input { Value = 72, },
-						StretchStart = Input { Value = 35, },
-						StretchEnd = Input { Value = 37, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 16.5 } },
-				},
-				MediaOut1 = MediaOut {
-					CtrlWZoom = false,
-					Inputs = {
-						Index = Input { Value = "0", },
-						Input = Input {
-							SourceOp = "KeyframeStretcher1",
-							Source = "Result",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 110, 16.5 } },
-				},
 				["文字ライン縮小"] = Transform {
 					NameSet = true,
 					Inputs = {
@@ -92,6 +69,49 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { -330, 16.5 } },
+				},
+				MaskPaint2 = PaintMask {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "ラインマスク",
+							Source = "Mask",
+						},
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "None" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Paint = Input {
+							SourceOp = "Rectangle6",
+							Source = "Out",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -330, -16.5 } },
+				},
+				Rectangle6 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Paint = Input {
+							SourceOp = "Rectangle5",
+							Source = "Out",
+						},
+					},
+				},
+				Rectangle5 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.74485981464386, 0.506644539302215 }, },
+						Width = Input { Value = 0.4803738594055, },
+						Height = Input { Value = 1.019934, },
+					},
 				},
 				["不透明背景"] = Background {
 					NameSet = true,
@@ -140,54 +160,51 @@
 				["不透明背景TopLeftAlpha"] = BezierSpline {
 					SplineColor = { Red = 180, Green = 180, Blue = 180 },
 					KeyFrames = {
-						[0] = { 0, RH = { 20, 0 } },
-						[60] = { 1, LH = { 38, 1 }, RH = { 83.6152346164006, 1 } },
-						[120] = { 1, LH = { 96.3847653835994, 0.999999999999998 }, RH = { 141.2, 1 } },
-						[180] = { 0, LH = { 160, 0 } }
+						[0] = { 0, RH = { 8, 0 } },
+						[24] = { 1, LH = { 15.2, 1 }, RH = { 33.4460938465602, 1 } },
+						[48] = { 1, LH = { 38.5539061534398, 0.999999999999999 }, RH = { 56.48, 1 } },
+						[72] = { 0, LH = { 64, 0 } }
 					}
 				},
-				MaskPaint2 = PaintMask {
+				KeyframeStretcher1 = KeyStretcher {
 					Inputs = {
-						EffectMask = Input {
-							SourceOp = "ラインマスク",
-							Source = "Mask",
+						Keyframes = Input {
+							SourceOp = "左上配置",
+							Source = "Output",
 						},
-						Filter = Input { Value = FuID { "Fast Gaussian" }, },
-						PaintMode = Input { Value = FuID { "None" }, },
-						MaskWidth = Input { Value = 1920, },
-						MaskHeight = Input { Value = 1080, },
-						PixelAspect = Input { Value = { 1, 1 }, },
+						SourceEnd = Input { Value = 72, },
+						StretchStart = Input { Value = 35, },
+						StretchEnd = Input { Value = 37, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 16.5 } },
+				},
+				["透明背景"] = Background {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
 						UseFrameFormatSettings = Input { Value = 1, },
-						ClippingMode = Input { Value = FuID { "None" }, },
-						Paint = Input {
-							SourceOp = "Rectangle6",
-							Source = "Out",
-						},
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { -330, -16.5 } },
+					ViewInfo = OperatorInfo { Pos = { -220, 82.5 } },
 				},
-				Rectangle6 = Rectangle {
-					IsThreaded = false,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
+				["半透明度指定用マージ"] = Merge {
+					NameSet = true,
 					Inputs = {
-						Paint = Input {
-							SourceOp = "Rectangle5",
-							Source = "Out",
+						Blend = Input { Value = 0.8, },
+						Background = Input {
+							SourceOp = "透明背景",
+							Source = "Output",
 						},
+						Foreground = Input {
+							SourceOp = "不透明背景",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
 					},
-				},
-				Rectangle5 = Rectangle {
-					IsThreaded = false,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					Inputs = {
-						Center = Input { Value = { 0.74485981464386, 0.506644539302215 }, },
-						Width = Input { Value = 0.4803738594055, },
-						Height = Input { Value = 1.019934, },
-					},
+					ViewInfo = OperatorInfo { Pos = { -220, 49.5 } },
 				},
 				MaskPaint1 = PaintMask {
 					Inputs = {
@@ -247,6 +264,106 @@
 						Height = Input { Value = 0.7774086520076, },
 					},
 				},
+				["左上配置"] = Transform {
+					NameSet = true,
+					Inputs = {
+						Center = Input { Value = { 0.144400785854617, 0.845549738219895 }, },
+						Size = Input { Value = 0.28, },
+						Input = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 16.5 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "半透明度指定用マージ",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "文字ライン縮小",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -220, 16.5 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "MaskPaint2",
+							Source = "Mask",
+						},
+						Background = Input {
+							SourceOp = "Merge3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "右文字",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -440, -16.5 } },
+				},
+				MediaOut1 = MediaOut {
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 16.5 } },
+				},
+				["ラインマスク"] = PaintMask {
+					NameSet = true,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "None" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Paint = Input {
+							SourceOp = "Rectangle1",
+							Source = "Out",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -220, -115.5 } },
+				},
+				Rectangle1 = Rectangle {
+					IsThreaded = false,
+					Brushes = {
+					},
+					ApplyModes = { "PaintApplyColor" },
+					Inputs = {
+						Center = Input { Value = { 0.5, 0.498611111111111 }, },
+						Width = Input { Value = 0.0122819542885, },
+						Height = Input { Value = 1, },
+					},
+				},
+				Merge3 = Merge {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "MaskPaint1",
+							Source = "Mask",
+						},
+						Background = Input {
+							SourceOp = "ライン",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "左文字",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -440, -49.5 } },
+				},
 				["ライン"] = Background {
 					NameSet = true,
 					Inputs = {
@@ -265,49 +382,8 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -440, -82.5 } },
 				},
-				Merge1 = Merge {
-					Inputs = {
-						Background = Input {
-							SourceOp = "半透明度指定用マージ",
-							Source = "Output",
-						},
-						Foreground = Input {
-							SourceOp = "文字ライン縮小",
-							Source = "Output",
-						},
-						PerformDepthMerge = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { -220, 16.5 } },
-				},
-				["半透明度指定用マージ"] = Merge {
-					NameSet = true,
-					Inputs = {
-						Blend = Input { Value = 0.8, },
-						Background = Input {
-							SourceOp = "透明背景",
-							Source = "Output",
-						},
-						Foreground = Input {
-							SourceOp = "不透明背景",
-							Source = "Output",
-						},
-						PerformDepthMerge = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { -220, 49.5 } },
-				},
-				["透明背景"] = Background {
-					NameSet = true,
-					Inputs = {
-						Width = Input { Value = 1920, },
-						Height = Input { Value = 1080, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						Depth = Input { Value = 1, },
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						TopLeftAlpha = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { -220, 82.5 } },
-				},
 				["右文字"] = TextPlus {
+					CtrlWZoom = false,
 					NameSet = true,
 					Inputs = {
 						MotionBlur = Input { Value = 1, },
@@ -364,29 +440,6 @@
 						[34] = { 0.488441464067957, LH = { 22.12, 0.488176585627183 }, RH = { 35.5520413935741, 0.48847606863903 }, Flags = { LockedY = true } },
 						[38] = { 0.488441464067957, LH = { 36.4283732172023, 0.48847419127328 }, RH = { 50.72, 0.488176585627183 }, Flags = { LockedY = true } },
 						[62] = { 1, LH = { 50.24, 1 }, Flags = { LockedY = true } }
-					}
-				},
-				Transform1 = Transform {
-					Inputs = {
-						UseSizeAndAspect = Input { Value = 0, },
-						YSize = Input {
-							SourceOp = "Transform1YSize",
-							Source = "Value",
-						},
-						Input = Input {
-							SourceOp = "ラインマスク",
-							Source = "Mask",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { -440, -115.5 } },
-				},
-				Transform1YSize = BezierSpline {
-					SplineColor = { Red = 252, Green = 91, Blue = 43 },
-					KeyFrames = {
-						[0] = { 0, RH = { 12.0558981756556, 0 } },
-						[24] = { 1, LH = { 13.04, 1 }, RH = { 31.9991998672485, 1 } },
-						[48] = { 1, LH = { 40.0008001327516, 1 }, RH = { 60.32, 1 } },
-						[72] = { 0, LH = { 60.48, 0 } }
 					}
 				},
 				["左文字"] = TextPlus {
@@ -446,81 +499,28 @@
 						[67] = { 1, LH = { 55.96, 1 }, Flags = { LockedY = true } }
 					}
 				},
-				["ラインマスク"] = PaintMask {
-					NameSet = true,
+				Transform1 = Transform {
 					Inputs = {
-						Filter = Input { Value = FuID { "Fast Gaussian" }, },
-						PaintMode = Input { Value = FuID { "None" }, },
-						MaskWidth = Input { Value = 1920, },
-						MaskHeight = Input { Value = 1080, },
-						PixelAspect = Input { Value = { 1, 1 }, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						ClippingMode = Input { Value = FuID { "None" }, },
-						Paint = Input {
-							SourceOp = "Rectangle1",
-							Source = "Out",
+						UseSizeAndAspect = Input { Value = 0, },
+						YSize = Input {
+							SourceOp = "Transform1YSize",
+							Source = "Value",
 						},
-					},
-					ViewInfo = OperatorInfo { Pos = { -220, -115.5 } },
-				},
-				Rectangle1 = Rectangle {
-					IsThreaded = false,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					Inputs = {
-						Center = Input { Value = { 0.5, 0.498611111111111 }, },
-						Width = Input { Value = 0.0122819542885, },
-						Height = Input { Value = 1, },
-					},
-				},
-				Merge3 = Merge {
-					Inputs = {
-						EffectMask = Input {
-							SourceOp = "MaskPaint1",
-							Source = "Mask",
-						},
-						Background = Input {
-							SourceOp = "ライン",
-							Source = "Output",
-						},
-						Foreground = Input {
-							SourceOp = "左文字",
-							Source = "Output",
-						},
-						PerformDepthMerge = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { -440, -49.5 } },
-				},
-				Merge2 = Merge {
-					Inputs = {
-						EffectMask = Input {
-							SourceOp = "MaskPaint2",
-							Source = "Mask",
-						},
-						Background = Input {
-							SourceOp = "Merge3",
-							Source = "Output",
-						},
-						Foreground = Input {
-							SourceOp = "右文字",
-							Source = "Output",
-						},
-						PerformDepthMerge = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { -440, -16.5 } },
-				},
-				["左上配置"] = Transform {
-					NameSet = true,
-					Inputs = {
-						Center = Input { Value = { 0.144400785854617, 0.845549738219895 }, },
-						Size = Input { Value = 0.28, },
 						Input = Input {
-							SourceOp = "Merge1",
-							Source = "Output",
+							SourceOp = "ラインマスク",
+							Source = "Mask",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -110, 16.5 } },
+					ViewInfo = OperatorInfo { Pos = { -440, -115.5 } },
+				},
+				Transform1YSize = BezierSpline {
+					SplineColor = { Red = 252, Green = 91, Blue = 43 },
+					KeyFrames = {
+						[0] = { 0, RH = { 12.0558981756556, 0 } },
+						[24] = { 1, LH = { 13.04, 1 }, RH = { 31.9991998672485, 1 } },
+						[48] = { 1, LH = { 40.0008001327516, 1 }, RH = { 60.32, 1 } },
+						[72] = { 0, LH = { 60.48, 0 } }
+					}
 				}
 			},
 		}
