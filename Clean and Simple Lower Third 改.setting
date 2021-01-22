@@ -122,7 +122,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 429.333, 125.864 },
+				Pos = { 220, 49.5 },
 				Flags = {
 					Expanded = true,
 					AllowPan = false,
@@ -138,6 +138,7 @@
 			},
 			Tools = ordered() {
 				Rectangle1 = RectangleMask {
+					CtrlWShown = false,
 					Inputs = {
 						Filter = Input { Value = FuID { "Fast Gaussian" }, },
 						MaskWidth = Input { Value = 1920, },
@@ -152,6 +153,7 @@
 				},
 				BOX = TextPlus {
 					ExtentSet = true,
+					CtrlWShown = false,
 					NameSet = true,
 					SourceOp = "BigText",
 					Inputs = {
@@ -248,6 +250,7 @@
 				},
 				BigText = TextPlus {
 					ExtentSet = true,
+					CtrlWShown = false,
 					NameSet = true,
 					Inputs = {
 						ExtendVertical2 = Input { Value = 0.375, },
@@ -262,7 +265,7 @@
 						Height = Input { Value = 2160, },
 						UseFrameFormatSettings = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						LineSpacing = Input { Value = 0.693, },
+						LineSpacing = Input { Value = 1.119, },
 						CharacterSpacing = Input { Value = 1.102, },
 						SelectElement = Input { Value = 1, },
 						Select = Input { Value = 1, },
@@ -288,9 +291,10 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { -329.711, 67.0411 } },
-					UserControls = ordered() { BigText = { INP_Integer = false, LBLC_DropDownButton = true, LINKID_DataType = "Number", LBLC_NumInputs = 11, LINKS_Name = "BigText", INPID_InputControl = "LabelControl", INP_Default = 1, }, Text = { INP_Integer = false, LBLC_DropDownButton = true, LINKID_DataType = "Number", LBLC_NumInputs = 11, INP_Default = 1, INPID_InputControl = "LabelControl", LINKS_Name = "Text", } }
+					UserControls = ordered() { BigText = { INP_Integer = false, LBLC_DropDownButton = true, LINKID_DataType = "Number", LBLC_NumInputs = 11, INP_Default = 1, INPID_InputControl = "LabelControl", LINKS_Name = "BigText", }, Text = { INP_Integer = false, LBLC_DropDownButton = true, LINKID_DataType = "Number", LBLC_NumInputs = 11, LINKS_Name = "Text", INPID_InputControl = "LabelControl", INP_Default = 1, } }
 				},
 				Transform2 = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Center = Input {
 							SourceOp = "Path4",
@@ -330,6 +334,7 @@
 				},
 				Color = Background {
 					ExtentSet = true,
+					CtrlWShown = false,
 					NameSet = true,
 					Inputs = {
 						EffectMask = Input {
@@ -346,9 +351,10 @@
 						TopLeftBlue = Input { Value = 1, },
 					},
 					ViewInfo = OperatorInfo { Pos = { 58.6593, 68.7561 } },
-					UserControls = ordered() { Color = { INP_Integer = false, LBLC_DropDownButton = true, LINKID_DataType = "Number", LBLC_NumInputs = 4, LINKS_Name = "Color", INPID_InputControl = "LabelControl", INP_Default = 0, } }
+					UserControls = ordered() { Color = { INP_Integer = false, LBLC_DropDownButton = true, LINKID_DataType = "Number", LBLC_NumInputs = 4, INP_Default = 0, INPID_InputControl = "LabelControl", LINKS_Name = "Color", } }
 				},
 				Merge4 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input {
 							SourceOp = "Merge4Blend",
@@ -377,6 +383,7 @@
 					}
 				},
 				Transform1 = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Center = Input { Value = { 0.111, 0.192 }, },
 						Input = Input {
@@ -385,7 +392,7 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 197.263, 68.7561 } },
-					UserControls = ordered() { Position = { INP_Integer = false, LBLC_DropDownButton = true, LINKID_DataType = "Number", LBLC_NumInputs = 1, LINKS_Name = "Position", INPID_InputControl = "LabelControl", INP_Default = 0, } }
+					UserControls = ordered() { Position = { INP_Integer = false, LBLC_DropDownButton = true, LINKID_DataType = "Number", LBLC_NumInputs = 1, INP_Default = 0, INPID_InputControl = "LabelControl", LINKS_Name = "Position", } }
 				},
 				KeyframeStretcher2 = KeyStretcher {
 					Inputs = {
@@ -408,7 +415,7 @@
 					Source = "Result",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 427.333, 71.3182 } },
+			ViewInfo = OperatorInfo { Pos = { 440, 49.5 } },
 		}
 	}
 }
