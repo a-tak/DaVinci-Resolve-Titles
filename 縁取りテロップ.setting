@@ -8,10 +8,14 @@
 				Height = Input { Value = 2160, },
 				UseFrameFormatSettings = Input { Value = 1, },
 				Center = Input { Value = { 0.5, 0.144 }, },
-				SelectElement = Input { Value = 1, },
-				Select = Input { Value = 1, },
+				SelectElement = Input { Value = 3, },
+				Select = Input { Value = 3, },
 				Enabled2 = Input { Value = 1, },
+				Enabled3 = Input { Value = 1, },
 				Name2 = Input { Value = "縁取り", },
+				Thickness2 = Input { Value = 0.0249, },
+				OutsideOnly2 = Input { Value = 1, },
+				Red2 = Input { Value = 0, },
 				StyledText = Input { Value = "テロップはここに入れます", },
 				Font = Input { Value = "A-OTF Futo Go B101 Pr6N", },
 				Style = Input { Value = "Bold", },
@@ -25,9 +29,6 @@
 						Value = ""
 					},
 				},
-				Thickness2 = Input { Value = 0.0249, },
-				OutsideOnly2 = Input { Value = 1, },
-				Red2 = Input { Value = 0, },
 			},
 			ViewInfo = OperatorInfo { Pos = { 220, 49.5 } },
 		},
@@ -41,5 +42,6 @@
 			},
 			ViewInfo = OperatorInfo { Pos = { 440, 49.5 } },
 		}
-	}
+	},
+	ActiveTool = "Template"
 }
