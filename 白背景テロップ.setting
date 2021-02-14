@@ -42,13 +42,6 @@
 				},
 				Input8 = InstanceInput {
 					SourceOp = "Text1",
-					Source = "Red4",
-					Name = "Color",
-					ControlGroup = 7,
-					Default = 1,
-				},
-				Input9 = InstanceInput {
-					SourceOp = "Text1",
 					Source = "Alpha4",
 					ControlGroup = 7,
 					Default = 0.9,
