@@ -5,6 +5,7 @@
 				Input1 = InstanceInput {
 					SourceOp = "Text1",
 					Source = "StyledText",
+					Name = "StyledText",
 				},
 				Input2 = InstanceInput {
 					SourceOp = "Text1",
@@ -18,19 +19,39 @@
 				},
 				Input4 = InstanceInput {
 					SourceOp = "Text1",
+					Source = "Red1Clone",
+					Name = "Color",
+					ControlGroup = 3,
+					Default = 0,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Text1",
 					Source = "Size",
 					Default = 0.0591,
 				},
-				Input5 = InstanceInput {
+				Input6 = InstanceInput {
 					SourceOp = "Text1",
 					Source = "CharacterSpacingClone",
 					Name = "Tracking",
 					Default = 1,
 				},
-				Input6 = InstanceInput {
+				Input7 = InstanceInput {
 					SourceOp = "Text1",
 					Source = "LineSpacingClone",
 					Default = 1.174,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "Text1",
+					Source = "Red4",
+					Name = "Color",
+					ControlGroup = 7,
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "Text1",
+					Source = "Alpha4",
+					ControlGroup = 7,
+					Default = 0.9,
 				},
 			},
 			Outputs = {
@@ -45,18 +66,6 @@
 			},
 			ViewInfo = GroupInfo { Pos = { 0, 0 } },
 			Tools = ordered() {
-				KeyframeStretcher1 = KeyStretcher {
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "Text1",
-							Source = "Output",
-						},
-						SourceEnd = Input { Value = 72, },
-						StretchStart = Input { Value = 25, },
-						StretchEnd = Input { Value = 47, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 646.332, 81.7161 } },
-				},
 				Text1 = TextPlus {
 					Inputs = {
 						EffectMask = Input {
@@ -69,8 +78,8 @@
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						Center = Input { Value = { 0.043699518326461, 0.212049071633492 }, },
 						LineSpacing = Input { Value = 1.174, },
-						SelectElement = Input { Value = 2, },
-						Select = Input { Value = 2, },
+						SelectElement = Input { Value = 3, },
+						Select = Input { Value = 3, },
 						Enabled4 = Input { Value = 1, },
 						Red1 = Input { Value = 0, },
 						Green1 = Input { Value = 0, },
@@ -84,6 +93,7 @@
 						ExtendVertical4 = Input { Value = 0.401, },
 						Red4 = Input { Value = 1, },
 						Green4 = Input { Value = 1, },
+						Alpha4 = Input { Value = 0.9, },
 						StyledText = Input { Value = "サンプルテキスト", },
 						Font = Input { Value = "Yu Gothic", },
 						Style = Input { Value = "Bold", },
@@ -103,6 +113,19 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 536.332, 81.7161 } },
 				},
+				KeyframeStretcher1 = KeyStretcher {
+					CtrlWZoom = false,
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "Text1",
+							Source = "Output",
+						},
+						SourceEnd = Input { Value = 72, },
+						StretchStart = Input { Value = 25, },
+						StretchEnd = Input { Value = 47, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 646.332, 81.7161 } },
+				},
 				MediaOut1 = MediaOut {
 					Inputs = {
 						Index = Input { Value = "0", },
@@ -114,7 +137,6 @@
 					ViewInfo = OperatorInfo { Pos = { 756.332, 93.9394 } },
 				},
 				MaskPaint1 = PaintMask {
-					CtrlWZoom = false,
 					Inputs = {
 						Filter = Input { Value = FuID { "Fast Gaussian" }, },
 						PaintMode = Input { Value = FuID { "None" }, },
