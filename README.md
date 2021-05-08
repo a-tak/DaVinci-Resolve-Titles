@@ -7,6 +7,7 @@ DaVinci ResolveのFusionで作成したEditページ用テンプレートです
 ### Windows
 
 `(インストールドライブ):\Users\(ユーザー名)\AppData\Roaming\Blackmagic Design\DaVinci Resolve\Support\Fusion\Templates\Edit\Titles` へsettingファイルをコピーしてDaVinci Resolveを再起動すると、カットやエディットページに各タイトルが表示されます。
+(トランジションは `Titles` ではなく `Transitions`)
 
 ## お手軽に確認する方法
 
