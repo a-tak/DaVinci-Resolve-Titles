@@ -1,0 +1,303 @@
+{
+	Tools = ordered() {
+		["アイキャッチ"] = MacroOperator {
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "MediaOut1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Loader1 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "F:\\Videos\\DaVinci Resolve\\ロゴ\\透過ロゴ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, -49.5 } },
+				},
+				MediaOut1 = MediaOut {
+					CtrlWZoom = false,
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "Merge3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, 49.5 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "文字位置調整",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "ロゴ位置調整",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, -16.5 } },
+				},
+				["背景"] = Background {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.ColorSpaceNest"] = Input { Value = 1, },
+						["Gamut.ColorSpace"] = Input { Value = FuID { "WideGamut" }, },
+						["Gamut.GammaSpaceNest"] = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 1, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 16.5 } },
+				},
+				Merge3 = Merge {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "アニメ",
+							Source = "Output",
+						},
+						ApplyMaskInverted = Input { Value = 1, },
+						Background = Input {
+							SourceOp = "シーン切り替えスイッチ",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 49.5 } },
+				},
+				MediaIn1 = MediaIn {
+					ExtentSet = true,
+					CustomData = { MediaProps = { MEDIA_LAYERS_IN_OUT_LIST = { { 0, 42 }, { 0, 42 } }, MEDIA_WIDTH = 3840, MEDIA_START_FRAME = 0, MEDIA_IS_SOURCE_RES = false, MEDIA_PAR = 1, MEDIA_NAME = "Cross Dissolve", MEDIA_HEIGHT = 2160, MEDIA_NUM_LAYERS = 2, MEDIA_AUDIO_TRACKS_NUM = 1, MEDIA_SRC_FRAME_RATE = 30, MEDIA_MARK_OUT = 41, MEDIA_AUDIO_TRACKS_DESC = { { MEDIA_AUDIO_BIT_DEPTH = 32, MEDIA_AUDIO_TRACK_ID = "Timeline Audio", MEDIA_AUDIO_TRACK_NAME = "Timeline Audio [アイキャッチ4K 24FPS2]", MEDIA_AUDIO_START_TIME = 0, MEDIA_AUDIO_FRAME_RATE = 30, MEDIA_AUDIO_SAMPLE_RATE = 48000, MEDIA_AUDIO_NUM_CHANNELS = 2 } }, MEDIA_NUM_FRAMES = 42, MEDIA_MARK_IN = 0, MEDIA_HAS_AUDIO = true }, },
+					Inputs = {
+						GlobalOut = Input { Value = 41, },
+						AudioTrack = Input { Value = FuID { "Timeline Audio" }, },
+						Layer = Input { Value = "0", },
+						ClipTimeEnd = Input { Value = 41, },
+						LeftAudio = Input {
+							SourceOp = "Left",
+							Source = "Data",
+						},
+						RightAudio = Input {
+							SourceOp = "Right",
+							Source = "Data",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 82.5 } },
+				},
+				Left = AudioDisplay {
+				},
+				Right = AudioDisplay {
+				},
+				["アニメ"] = Transform {
+					NameSet = true,
+					Inputs = {
+						MotionBlur = Input { Value = 1, },
+						UseSizeAndAspect = Input { Value = 0, },
+						XSize = Input { Value = 1.51, },
+						YSize = Input {
+							SourceOp = "アニメYSize",
+							Source = "Value",
+						},
+						Angle = Input { Value = 45, },
+						Input = Input {
+							SourceOp = "トランジションマスク",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 49.5 } },
+				},
+				["アニメYSize"] = BezierSpline {
+					SplineColor = { Red = 252, Green = 91, Blue = 43 },
+					KeyFrames = {
+						[0] = { 1, RH = { 11.8, 1 } },
+						[12] = { 0, LH = { 0.1, 0 }, RH = { 16.719116142752, -2.85693017111843e-15 } },
+						[24] = { 0, LH = { 19.280883857248, 2.54056911239303e-15 }, RH = { 34.9, 0 } },
+						[36] = { 1, LH = { 24.4, 1 } }
+					}
+				},
+				["ロゴ位置調整"] = Transform {
+					NameSet = true,
+					Inputs = {
+						Center = Input { Value = { 0.267884715380677, 0.504366812227074 }, },
+						Size = Input { Value = 0.161, },
+						Input = Input {
+							SourceOp = "ColorCorrector1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, -49.5 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "背景",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Merge2",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 16.5 } },
+				},
+				["シーン切り替えスイッチ"] = Merge {
+					NameSet = true,
+					Inputs = {
+						Blend = Input {
+							SourceOp = "シーン切り替えスイッチBlend",
+							Source = "Value",
+						},
+						Background = Input {
+							SourceOp = "MediaIn1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "MediaIn2",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 82.5 } },
+				},
+				["シーン切り替えスイッチBlend"] = BezierSpline {
+					SplineColor = { Red = 205, Green = 205, Blue = 205 },
+					KeyFrames = {
+						[23] = { 0, RH = { 23.3333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+						[24] = { 1, LH = { 23.6666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+					}
+				},
+				["トランジションマスク"] = Background {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 12891, },
+						Height = Input { Value = 4386, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 49.5 } },
+				},
+				ATAKCOM = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Red1 = Input { Value = 0.0588235294118, },
+						Green1 = Input { Value = 0.0588235294118, },
+						Blue1 = Input { Value = 0.0588235294118, },
+						StyledText = Input { Value = "A-TAK.COM", },
+						Font = Input { Value = "Open Sans", },
+						Style = Input { Value = "Bold", },
+						VerticalJustificationNew = Input { Value = 3, },
+						HorizontalJustificationNew = Input { Value = 3, },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, -16.5 } },
+				},
+				["文字位置調整"] = Transform {
+					NameSet = true,
+					Inputs = {
+						Center = Input { Value = { 0.543632632485621, 0.497816593886463 }, },
+						Input = Input {
+							SourceOp = "ATAKCOM",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, -16.5 } },
+				},
+				MediaIn2 = MediaIn {
+					ExtentSet = true,
+					CustomData = { MediaProps = { MEDIA_LAYERS_IN_OUT_LIST = { { 0, 42 }, { 0, 42 } }, MEDIA_WIDTH = 3840, MEDIA_START_FRAME = 0, MEDIA_IS_SOURCE_RES = false, MEDIA_PAR = 1, MEDIA_NAME = "Cross Dissolve", MEDIA_HEIGHT = 2160, MEDIA_NUM_LAYERS = 2, MEDIA_AUDIO_TRACKS_NUM = 1, MEDIA_SRC_FRAME_RATE = 30, MEDIA_MARK_OUT = 41, MEDIA_AUDIO_TRACKS_DESC = { { MEDIA_AUDIO_BIT_DEPTH = 32, MEDIA_AUDIO_TRACK_ID = "Timeline Audio", MEDIA_AUDIO_TRACK_NAME = "Timeline Audio [アイキャッチ4K 24FPS2]", MEDIA_AUDIO_START_TIME = 0, MEDIA_AUDIO_FRAME_RATE = 30, MEDIA_AUDIO_SAMPLE_RATE = 48000, MEDIA_AUDIO_NUM_CHANNELS = 2 } }, MEDIA_NUM_FRAMES = 42, MEDIA_MARK_IN = 0, MEDIA_HAS_AUDIO = true } },
+					Inputs = {
+						GlobalOut = Input { Value = 41, },
+						AudioTrack = Input { Value = FuID { "Timeline Audio" }, },
+						Layer = Input { Value = "1", },
+						ClipTimeEnd = Input { Value = 41, },
+						LeftAudio = Input {
+							SourceOp = "Left",
+							Source = "Data",
+						},
+						RightAudio = Input {
+							SourceOp = "Right",
+							Source = "Data",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 115.5 } },
+				},
+				ColorCorrector1 = ColorCorrector {
+					Inputs = {
+						WheelSaturation1 = Input { Value = 2, },
+						MasterRGBContrast = Input { Value = 1.92, },
+						MasterRGBGain = Input { Value = 0.72, },
+						ColorRanges = Input {
+							Value = ColorCurves {
+								Curves = {
+									{
+										Points = {
+											{ 0, 1 },
+											{ 0.4, 0.2 },
+											{ 0.6, 0 },
+											{ 1, 0 }
+										}
+									},
+									{
+										Points = {
+											{ 0, 0 },
+											{ 0.4, 0 },
+											{ 0.6, 0.2 },
+											{ 1, 1 }
+										}
+									}
+								}
+							},
+						},
+						HistogramIgnoreTransparent = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "Loader1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, -49.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "アイキャッチ"
+}
