@@ -13,7 +13,7 @@
 					Clips = {
 						Clip {
 							ID = "Clip1",
-							Filename = "F:\\Videos\\DaVinci Resolve\\ロゴ\\透過ロゴ.png",
+							Filename = "D:\\DaVinci Resolve\\ロゴ\\透過ロゴ.png",
 							FormatID = "PNGFormat",
 							StartFrame = -1,
 							LengthSetManually = true,
