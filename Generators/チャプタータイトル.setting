@@ -1,0 +1,182 @@
+{
+	Tools = ordered() {
+		["チャプタータイトル1"] = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "チャプタータイトル",
+					Source = "StyledText",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "チャプタータイトル",
+					Source = "Font",
+					ControlGroup = 2,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "チャプタータイトル",
+					Source = "Style",
+					ControlGroup = 2,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "チャプタータイトル",
+					Source = "Red1Clone",
+					Name = "Color",
+					ControlGroup = 3,
+					Default = 0.0392156862745,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "チャプタータイトル",
+					Source = "Green1Clone",
+					ControlGroup = 3,
+					Default = 0.0392156862745,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "チャプタータイトル",
+					Source = "Blue1Clone",
+					ControlGroup = 3,
+					Default = 0.0392156862745,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "チャプタータイトル",
+					Source = "Alpha1Clone",
+					ControlGroup = 3,
+					Default = 1,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "チャプタータイトル",
+					Source = "Size",
+					Default = 0.0855,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "MediaOut1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Loader1 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "D:\\DaVinci Resolve\\ロゴ\\透過ロゴ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.ColorSpaceNest"] = Input { Value = 1, },
+						["Gamut.ColorType"] = Input { Value = FuID { "Space" }, },
+						["Gamut.ColorSpace"] = Input { Value = FuID { "sRGB" }, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 198, -10.2121 } },
+				},
+				Transform1 = Transform {
+					Inputs = {
+						Center = Input { Value = { 1.41448128342246, 0.100239616613419 }, },
+						Size = Input { Value = 0.265, },
+						Input = Input {
+							SourceOp = "Loader1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 418, 1.30303 } },
+				},
+				Background1 = Background {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.ColorSpaceNest"] = Input { Value = 1, },
+						["Gamut.GammaSpaceNest"] = Input { Value = 1, },
+						["Gamut.GammaSpace"] = Input { Value = FuID { "Adobe" }, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 1, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 262.667, 35.2424 } },
+				},
+				["チャプタータイトル"] = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Red1 = Input { Value = 0.0392156862745, },
+						Green1 = Input { Value = 0.0392156862745, },
+						Blue1 = Input { Value = 0.0392156862745, },
+						StyledText = Input { Value = "ここにタイトルを書く", },
+						Font = Input { Value = "IBM Plex Sans JP", },
+						Style = Input { Value = "Bold", },
+						Size = Input { Value = 0.0855, },
+						VerticalJustificationNew = Input { Value = 3, },
+						HorizontalJustificationNew = Input { Value = 3, },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 198, 77.3333 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "チャプタータイトル",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 418, 77.3333 } },
+				},
+				MediaOut1 = MediaOut {
+					CtrlWZoom = false,
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "Merge2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 598.667, 50.1061 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 418, 44.3333 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "チャプタータイトル1"
+}
