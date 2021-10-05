@@ -1,0 +1,153 @@
+{
+	Tools = ordered() {
+		MacroTool1 = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "sEllipse1",
+					Source = "BorderWidth",
+					Default = 0.006,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "sEllipse1",
+					Source = "Width",
+					Default = 0.5,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "sEllipse1",
+					Source = "Height",
+					Default = 0.5,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "sEllipse1",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "sEllipse1",
+					Source = "Green",
+					ControlGroup = 4,
+					Default = 0,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "sEllipse1",
+					Source = "Blue",
+					ControlGroup = 4,
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "sEllipse1",
+					Source = "Alpha",
+					ControlGroup = 4,
+					Default = 0.772,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "MediaOut1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Background1 = Background {
+					CtrlWZoom = false,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 193, 29.1212 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "sRender1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 192.333, 93.697 } },
+				},
+				KeyframeStretcher1 = KeyStretcher {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						StretchStart = Input { Value = 19, },
+						StretchEnd = Input { Value = 20, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 357.333, 93.697 } },
+				},
+				sRender1 = sRender {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sEllipse1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 82.3333, 60.697 } },
+				},
+				MediaOut1 = MediaOut {
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 514, 86.4697 } },
+				},
+				sEllipse1 = sEllipse {
+					Inputs = {
+						Solid = Input { Value = 0, },
+						BorderWidth = Input { Value = 0.006, },
+						["Translate.X"] = Input { Value = 0.0313818, },
+						["Translate.Y"] = Input { Value = 0.0984153272705, },
+						Width = Input {
+							SourceOp = "sEllipse1Width",
+							Source = "Value",
+						},
+						Height = Input {
+							SourceOp = "sEllipse1Height",
+							Source = "Value",
+						},
+						Green = Input { Value = 0, },
+						Blue = Input { Value = 0, },
+						Alpha = Input { Value = 0.772, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -82.6667, 60.697 } },
+				},
+				sEllipse1Width = BezierSpline {
+					SplineColor = { Red = 225, Green = 255, Blue = 0 },
+					NameSet = true,
+					KeyFrames = {
+						[0] = { 0, RH = { 5, 0 } },
+						[15] = { 0.351, LH = { 10, 0.351 } }
+					}
+				},
+				sEllipse1Height = BezierSpline {
+					SplineColor = { Red = 0, Green = 255, Blue = 255 },
+					NameSet = true,
+					KeyFrames = {
+						[0] = { 0, RH = { 5, 0 } },
+						[15] = { 0.351, LH = { 10, 0.351 } }
+					}
+				}
+			},
+		}
+	},
+	ActiveTool = "MacroTool1"
+}
