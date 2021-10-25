@@ -1,0 +1,283 @@
+{
+	Tools = ordered() {
+		["アスキーアート風ふきだし"] = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Translate.X",
+					Name = "左X Offset",
+					Default = -0.1243315508021,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Red",
+					Name = "左Color",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Green",
+					Name = "左Green",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Blue",
+					Name = "左Blue",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Alpha",
+					Name = "左Alpha",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Translate.X",
+					Name = "右X Offset",
+					Default = 0.1149732620321,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Red",
+					Name = "右Color",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Green",
+					Name = "右Green",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Blue",
+					Name = "右Blue",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Alpha",
+					Name = "右Alpha",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "テキスト",
+					Source = "StyledText",
+				},
+				Input12 = InstanceInput {
+					SourceOp = "テキスト",
+					Source = "Font",
+					ControlGroup = 6,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "テキスト",
+					Source = "Style",
+					ControlGroup = 6,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "テキスト",
+					Source = "Red1Clone",
+					Name = "Color",
+					ControlGroup = 7,
+					Default = 1,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "テキスト",
+					Source = "Green1Clone",
+					ControlGroup = 7,
+					Default = 1,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "テキスト",
+					Source = "Blue1Clone",
+					ControlGroup = 7,
+					Default = 1,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "テキスト",
+					Source = "Alpha1Clone",
+					ControlGroup = 7,
+					Default = 1,
+				},
+				Input18 = InstanceInput {
+					SourceOp = "テキスト",
+					Source = "Size",
+					Default = 0.056,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "MediaOut1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				["左吹き出し"] = sRectangle {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						["Translate.X"] = Input { Value = -0.1243315508021, },
+						["Translate.Y"] = Input {
+							SourceOp = "左吹き出しYOffset",
+							Source = "Value",
+						},
+						Width = Input { Value = 0.01, },
+						Height = Input { Value = 0.063, },
+						Angle = Input { Value = 30, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 182.667, 14.6364 } },
+				},
+				["左吹き出しYOffset"] = BezierSpline {
+					SplineColor = { Red = 252, Green = 57, Blue = 47 },
+					KeyFrames = {
+						[0] = { -0.0596588, RH = { 2, -0.0596588 } },
+						[6] = { -0.012, LH = { 4.00020002285506, -0.014444200480211 }, RH = { 7.33319998476329, -0.0103705330131927 } },
+						[10] = { -0.0399110954262382, LH = { 8.66666666666667, -0.0399110954262382 } }
+					}
+				},
+				["右吹き出し"] = sRectangle {
+					NameSet = true,
+					Inputs = {
+						["Translate.X"] = Input { Value = 0.1149732620321, },
+						["Translate.Y"] = Input {
+							SourceOp = "右吹き出しYOffset",
+							Source = "Value",
+						},
+						Width = Input { Value = 0.01, },
+						Height = Input { Value = 0.063, },
+						Angle = Input { Value = -30, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 198.667, 46.4243 } },
+				},
+				["右吹き出しYOffset"] = BezierSpline {
+					SplineColor = { Red = 252, Green = 57, Blue = 47 },
+					KeyFrames = {
+						[0] = { -0.0596588, RH = { 2, -0.0596588 } },
+						[6] = { -0.012, LH = { 4.00020003318787, -0.0144442004675862 }, RH = { 7.33319997787476, -0.0103705330216092 } },
+						[10] = { -0.0399110954262, LH = { 8.66666666666667, -0.0399110954262 } }
+					}
+				},
+				["テキスト"] = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						StyledText = Input { Value = "びっくり", },
+						Font = Input { Value = "cinecaption", },
+						Style = Input { Value = "Regular", },
+						Size = Input { Value = 0.056, },
+						VerticalTopCenterBottom = Input {
+							SourceOp = "テキストVAnchor",
+							Source = "Value",
+						},
+						VerticalJustificationNew = Input { Value = 3, },
+						HorizontalJustificationNew = Input { Value = 3, },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 230, 89.1212 } },
+				},
+				["テキストVAnchor"] = BezierSpline {
+					SplineColor = { Red = 246, Green = 26, Blue = 171 },
+					KeyFrames = {
+						[0] = { -0.62, RH = { 4, -0.62 } },
+						[12] = { -0.015, LH = { 8, -0.015 } }
+					}
+				},
+				sMerge1 = sMerge {
+					Inputs = {
+						Input1 = Input {
+							SourceOp = "左吹き出し",
+							Source = "Output",
+						},
+						Input2 = Input {
+							SourceOp = "右吹き出し",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 308.667, 46.4243 } },
+				},
+				MediaOut1 = MediaOut {
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 673.334, 12.4849 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Blend = Input {
+							SourceOp = "Merge1Blend",
+							Source = "Value",
+						},
+						Background = Input {
+							SourceOp = "sRender1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "テキスト",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 418.667, 13.4243 } },
+				},
+				Merge1Blend = BezierSpline {
+					SplineColor = { Red = 205, Green = 205, Blue = 205 },
+					KeyFrames = {
+						[5] = { 0, RH = { 7.33333333333333, 0 } },
+						[12] = { 0.979999999999999, LH = { 9.66666666666667, 0.979999999999999 } }
+					}
+				},
+				sRender1 = sRender {
+					Inputs = {
+						MotionBlur = Input { Value = 1, },
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sMerge1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 308.667, 13.4243 } },
+				},
+				KeyframeStretcher1 = KeyStretcher {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						SourceEnd = Input { Value = 72, },
+						StretchStart = Input { Value = 13, },
+						StretchEnd = Input { Value = 14, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 543.334, 13.4243 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "アスキーアート風ふきだし"
+}
