@@ -1,0 +1,190 @@
+{
+	Tools = ordered() {
+		["レターボックス"] = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "上帯",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 1,
+					Default = 0,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "上帯",
+					Source = "Green",
+					ControlGroup = 1,
+					Default = 0.1137254901961,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "上帯",
+					Source = "Blue",
+					ControlGroup = 1,
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "上帯",
+					Source = "Alpha",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "下帯",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 2,
+					Default = 0,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "下帯",
+					Source = "Green",
+					ControlGroup = 2,
+					Default = 0.0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "下帯",
+					Source = "Blue",
+					ControlGroup = 2,
+					Default = 0,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "下帯",
+					Source = "Alpha",
+					ControlGroup = 2,
+					Default = 1,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "MediaOut1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				["上帯"] = sRectangle {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						["Translate.Y"] = Input { Value = 0.2456738379812, },
+						Width = Input { Value = 1, },
+						Height = Input { Value = 0.0720449790795, },
+						Red = Input { Value = 0, },
+						Green = Input { Value = 0.0, },
+						Blue = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 172, 1.90909 } },
+				},
+				sTransform1 = sTransform {
+					Inputs = {
+						YSize = Input {
+							SourceOp = "sTransform1YSize",
+							Source = "Value",
+						},
+						YPivot = Input { Value = 0.281, },
+						Input = Input {
+							SourceOp = "上帯",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 282, 1.90909 } },
+				},
+				sTransform1YSize = BezierSpline {
+					SplineColor = { Red = 252, Green = 91, Blue = 43 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 25, 0.333333333333333 }, Flags = { Linear = true } },
+						[75] = { 1, LH = { 50, 1 }, RH = { 85, 1 } },
+						[105] = { 1, LH = { 95, 1 }, RH = { 131.276298766443, 0.999999999999997 } },
+						[180] = { 0, LH = { 155, 0.333333333333333 } }
+					}
+				},
+				sRender1 = sRender {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sMerge1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 392, 4.33333 } },
+				},
+				sMerge1 = sMerge {
+					Inputs = {
+						Input1 = Input {
+							SourceOp = "sTransform1",
+							Source = "Output",
+						},
+						Input2 = Input {
+							SourceOp = "sTransform2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 392, 37.3333 } },
+				},
+				["下帯"] = sRectangle {
+					NameSet = true,
+					Inputs = {
+						["Translate.Y"] = Input { Value = -0.2456738379812, },
+						Width = Input { Value = 1, },
+						Height = Input { Value = 0.0720449790795, },
+						Red = Input { Value = 0, },
+						Green = Input { Value = 0.0, },
+						Blue = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 172, 34.9091 } },
+				},
+				KeyframeStretcher1 = KeyStretcher {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "sRender1",
+							Source = "Output",
+						},
+						SourceEnd = Input { Value = 180, },
+						StretchStart = Input { Value = 80, },
+						StretchEnd = Input { Value = 90, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 521.333, 28.2424 } },
+				},
+				MediaOut1 = MediaOut {
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 612, 49.5 } },
+				},
+				sTransform2 = sTransform {
+					EnabledRegion = TimeRegion { { Start = 0, End = 179.9999 } },
+					Inputs = {
+						YSize = Input {
+							SourceOp = "sTransform2YSize",
+							Source = "Value",
+						},
+						YPivot = Input { Value = -0.281, },
+						Input = Input {
+							SourceOp = "下帯",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 282, 34.9091 } },
+				},
+				sTransform2YSize = BezierSpline {
+					SplineColor = { Red = 252, Green = 91, Blue = 43 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 25, 0.333333333333333 }, Flags = { Linear = true } },
+						[75] = { 1, LH = { 50, 1 }, RH = { 85, 1 } },
+						[105] = { 1, LH = { 95.2, 1 }, RH = { 131.276298766443, 0.999999999999997 } },
+						[180] = { 0, LH = { 155, 0.333333333333333 } }
+					}
+				}
+			},
+		}
+	},
+	ActiveTool = "レターボックス"
+}
