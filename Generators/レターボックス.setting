@@ -13,7 +13,7 @@
 					SourceOp = "上帯",
 					Source = "Green",
 					ControlGroup = 1,
-					Default = 0.1137254901961,
+					Default = 0,
 				},
 				Input3 = InstanceInput {
 					SourceOp = "上帯",
@@ -38,7 +38,7 @@
 					SourceOp = "下帯",
 					Source = "Green",
 					ControlGroup = 2,
-					Default = 0.0,
+					Default = 0,
 				},
 				Input7 = InstanceInput {
 					SourceOp = "下帯",
@@ -65,14 +65,24 @@
 					CtrlWZoom = false,
 					NameSet = true,
 					Inputs = {
-						["Translate.Y"] = Input { Value = 0.2456738379812, },
+						["Translate.Y"] = Input { Value = 0.2398237505539, },
 						Width = Input { Value = 1, },
-						Height = Input { Value = 0.0720449790795, },
+						Height = Input { Value = 0.0828, },
 						Red = Input { Value = 0, },
-						Green = Input { Value = 0.0, },
+						Green = Input { Value = 0, },
 						Blue = Input { Value = 0, },
 					},
 					ViewInfo = OperatorInfo { Pos = { 172, 1.90909 } },
+				},
+				MediaOut1 = MediaOut {
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 612, 49.5 } },
 				},
 				sTransform1 = sTransform {
 					Inputs = {
@@ -98,19 +108,6 @@
 						[180] = { 0, LH = { 155, 0.333333333333333 } }
 					}
 				},
-				sRender1 = sRender {
-					Inputs = {
-						Width = Input { Value = 1920, },
-						Height = Input { Value = 1080, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						Input = Input {
-							SourceOp = "sMerge1",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 392, 4.33333 } },
-				},
 				sMerge1 = sMerge {
 					Inputs = {
 						Input1 = Input {
@@ -123,40 +120,6 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 392, 37.3333 } },
-				},
-				["下帯"] = sRectangle {
-					NameSet = true,
-					Inputs = {
-						["Translate.Y"] = Input { Value = -0.2456738379812, },
-						Width = Input { Value = 1, },
-						Height = Input { Value = 0.0720449790795, },
-						Red = Input { Value = 0, },
-						Green = Input { Value = 0.0, },
-						Blue = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 172, 34.9091 } },
-				},
-				KeyframeStretcher1 = KeyStretcher {
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "sRender1",
-							Source = "Output",
-						},
-						SourceEnd = Input { Value = 180, },
-						StretchStart = Input { Value = 80, },
-						StretchEnd = Input { Value = 90, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 521.333, 28.2424 } },
-				},
-				MediaOut1 = MediaOut {
-					Inputs = {
-						Index = Input { Value = "0", },
-						Input = Input {
-							SourceOp = "KeyframeStretcher1",
-							Source = "Result",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 612, 49.5 } },
 				},
 				sTransform2 = sTransform {
 					EnabledRegion = TimeRegion { { Start = 0, End = 179.9999 } },
@@ -182,6 +145,43 @@
 						[105] = { 1, LH = { 95.2, 1 }, RH = { 131.276298766443, 0.999999999999997 } },
 						[180] = { 0, LH = { 155, 0.333333333333333 } }
 					}
+				},
+				["下帯"] = sRectangle {
+					NameSet = true,
+					Inputs = {
+						["Translate.Y"] = Input { Value = -0.2398040481867, },
+						Width = Input { Value = 1, },
+						Height = Input { Value = 0.0828, },
+						Red = Input { Value = 0, },
+						Green = Input { Value = 0, },
+						Blue = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 172, 34.9091 } },
+				},
+				sRender1 = sRender {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sMerge1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 392, 4.33333 } },
+				},
+				KeyframeStretcher1 = KeyStretcher {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "sRender1",
+							Source = "Output",
+						},
+						SourceEnd = Input { Value = 180, },
+						StretchStart = Input { Value = 80, },
+						StretchEnd = Input { Value = 90, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 521.333, 28.2424 } },
 				}
 			},
 		}
