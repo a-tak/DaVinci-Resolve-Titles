@@ -3,92 +3,92 @@
 		["アスキーアート風ふきだし"] = MacroOperator {
 			Inputs = ordered() {
 				Input1 = InstanceInput {
-					SourceOp = "左吹き出し",
-					Source = "Red",
-					Name = "Color",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "左吹き出し",
-					Source = "Green",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input3 = InstanceInput {
-					SourceOp = "左吹き出し",
-					Source = "Blue",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input4 = InstanceInput {
-					SourceOp = "左吹き出し",
-					Source = "Alpha",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input5 = InstanceInput {
-					SourceOp = "右吹き出し",
-					Source = "Red",
-					Name = "Color",
-					ControlGroup = 2,
-					Default = 1,
-				},
-				Input6 = InstanceInput {
-					SourceOp = "右吹き出し",
-					Source = "Green",
-					ControlGroup = 2,
-					Default = 1,
-				},
-				Input7 = InstanceInput {
-					SourceOp = "右吹き出し",
-					Source = "Blue",
-					ControlGroup = 2,
-					Default = 1,
-				},
-				Input8 = InstanceInput {
-					SourceOp = "右吹き出し",
-					Source = "Alpha",
-					ControlGroup = 2,
-					Default = 1,
-				},
-				Input9 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "StyledText",
 				},
-				Input10 = InstanceInput {
+				Input2 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Font",
 					ControlGroup = 4,
 				},
-				Input11 = InstanceInput {
+				Input3 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Style",
 					ControlGroup = 4,
 				},
-				Input12 = InstanceInput {
+				Input4 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Red1Clone",
 					Name = "Color",
 					ControlGroup = 5,
 					Default = 1,
 				},
-				Input13 = InstanceInput {
+				Input5 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Green1Clone",
 					ControlGroup = 5,
 					Default = 1,
 				},
-				Input14 = InstanceInput {
+				Input6 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Blue1Clone",
 					ControlGroup = 5,
 					Default = 1,
 				},
-				Input15 = InstanceInput {
+				Input7 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Size",
 					Default = 0.056,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Green",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Blue",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "左吹き出し",
+					Source = "Alpha",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Green",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Blue",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "右吹き出し",
+					Source = "Alpha",
+					ControlGroup = 2,
+					Default = 1,
 				},
 			},
 			Outputs = {
