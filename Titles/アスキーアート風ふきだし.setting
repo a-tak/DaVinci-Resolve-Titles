@@ -9,86 +9,36 @@
 				Input2 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Font",
-					ControlGroup = 4,
+					ControlGroup = 2,
 				},
 				Input3 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Style",
-					ControlGroup = 4,
+					ControlGroup = 2,
 				},
 				Input4 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Red1Clone",
 					Name = "Color",
-					ControlGroup = 5,
+					ControlGroup = 3,
 					Default = 1,
 				},
 				Input5 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Green1Clone",
-					ControlGroup = 5,
+					ControlGroup = 3,
 					Default = 1,
 				},
 				Input6 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Blue1Clone",
-					ControlGroup = 5,
+					ControlGroup = 3,
 					Default = 1,
 				},
 				Input7 = InstanceInput {
 					SourceOp = "テキスト",
 					Source = "Size",
 					Default = 0.056,
-				},
-				Input8 = InstanceInput {
-					SourceOp = "左吹き出し",
-					Source = "Red",
-					Name = "Color",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input9 = InstanceInput {
-					SourceOp = "左吹き出し",
-					Source = "Green",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input10 = InstanceInput {
-					SourceOp = "左吹き出し",
-					Source = "Blue",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input11 = InstanceInput {
-					SourceOp = "左吹き出し",
-					Source = "Alpha",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input12 = InstanceInput {
-					SourceOp = "右吹き出し",
-					Source = "Red",
-					Name = "Color",
-					ControlGroup = 2,
-					Default = 1,
-				},
-				Input13 = InstanceInput {
-					SourceOp = "右吹き出し",
-					Source = "Green",
-					ControlGroup = 2,
-					Default = 1,
-				},
-				Input14 = InstanceInput {
-					SourceOp = "右吹き出し",
-					Source = "Blue",
-					ControlGroup = 2,
-					Default = 1,
-				},
-				Input15 = InstanceInput {
-					SourceOp = "右吹き出し",
-					Source = "Alpha",
-					ControlGroup = 2,
-					Default = 1,
 				},
 			},
 			Outputs = {
@@ -99,32 +49,64 @@
 			},
 			ViewInfo = GroupInfo { Pos = { 0, 0 } },
 			Tools = ordered() {
-				["左吹き出し"] = sRectangle {
+				["テキスト"] = TextPlus {
 					CtrlWZoom = false,
 					NameSet = true,
 					Inputs = {
-						["Translate.X"] = Input {
-							Value = -0.285520833333333,
-							Expression = "(((テキスト.Output[0].DataWindow[3]-テキスト.Output[0].DataWindow[1])/テキスト.Output[0].OriginalWidth) / 2) * -1 - 0.01",
-						},
-						["Translate.Y"] = Input {
-							SourceOp = "左吹き出しYOffset",
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Red1 = Input {
+							SourceOp = "Publish1",
 							Source = "Value",
-							Expression = "(((テキスト.Output[0].DataWindow[4]-テキスト.Output[0].DataWindow[2])/テキスト.Output[0].OriginalWidth/ 2) *-1) - 0.01",
 						},
-						Width = Input { Value = 0.01, },
-						Height = Input { Value = 0.063, },
-						Angle = Input { Value = 30, },
+						Green1 = Input {
+							SourceOp = "Publish2",
+							Source = "Value",
+						},
+						Blue1 = Input {
+							SourceOp = "Publish3",
+							Source = "Value",
+						},
+						StyledText = Input { Value = "アスキーアート風吹き出し!", },
+						Font = Input { Value = "cinecaption", },
+						Style = Input { Value = "Regular", },
+						Size = Input { Value = 0.056, },
+						VerticalTopCenterBottom = Input {
+							SourceOp = "テキストVAnchor",
+							Source = "Value",
+						},
+						VerticalJustificationNew = Input { Value = 3, },
+						HorizontalJustificationNew = Input { Value = 3, },
+						AdvancedFontControls = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 182.667, 14.6364 } },
+					ViewInfo = OperatorInfo { Pos = { 226.667, 89.7273 } },
 				},
-				["左吹き出しYOffset"] = BezierSpline {
-					SplineColor = { Red = 252, Green = 57, Blue = 47 },
+				Publish1 = PublishNumber {
+					CtrlWZoom = false,
+					Inputs = {
+						Value = Input { Value = 1, },
+					},
+				},
+				Publish2 = PublishNumber {
+					CtrlWZoom = false,
+					Inputs = {
+						Value = Input { Value = 1, },
+					},
+				},
+				Publish3 = PublishNumber {
+					CtrlWZoom = false,
+					Inputs = {
+						Value = Input { Value = 1, },
+					},
+				},
+				["テキストVAnchor"] = BezierSpline {
+					SplineColor = { Red = 246, Green = 26, Blue = 171 },
 					CtrlWZoom = false,
 					KeyFrames = {
-						[0] = { -0.0596588, RH = { 2, -0.0596588 } },
-						[6] = { -0.012, LH = { 4.00020002285506, -0.014444200480211 }, RH = { 7.33319998476329, -0.0103705330131927 } },
-						[10] = { -0.0399110954262382, LH = { 8.66666666666667, -0.0399110954262382 } }
+						[0] = { -0.62, RH = { 4, -0.62 } },
+						[12] = { -0.015, LH = { 8, -0.015 } }
 					}
 				},
 				["右吹き出し"] = sRectangle {
@@ -142,6 +124,18 @@
 						Width = Input { Value = 0.01, },
 						Height = Input { Value = 0.063, },
 						Angle = Input { Value = -30, },
+						Red = Input {
+							SourceOp = "Publish1",
+							Source = "Value",
+						},
+						Green = Input {
+							SourceOp = "Publish2",
+							Source = "Value",
+						},
+						Blue = Input {
+							SourceOp = "Publish3",
+							Source = "Value",
+						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 198.667, 46.4243 } },
 				},
@@ -157,39 +151,43 @@
 						[32] = { -0.0629111, LH = { 28, -0.0419407333333333 }, Flags = { Linear = true } }
 					}
 				},
-				KeyframeStretcher1 = KeyStretcher {
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "Merge1",
-							Source = "Output",
-						},
-						SourceEnd = Input { Value = 72, },
-						StretchStart = Input { Value = 13, },
-						StretchEnd = Input { Value = 15, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 780.001, 44.9394 } },
-				},
-				["吹き出しアニメ"] = sTransform {
+				["左吹き出し"] = sRectangle {
 					NameSet = true,
 					Inputs = {
-						YOffset = Input {
-							SourceOp = "吹き出しアニメYOffset",
+						["Translate.X"] = Input {
+							Value = -0.285520833333333,
+							Expression = "(((テキスト.Output[0].DataWindow[3]-テキスト.Output[0].DataWindow[1])/テキスト.Output[0].OriginalWidth) / 2) * -1 - 0.01",
+						},
+						["Translate.Y"] = Input {
+							SourceOp = "左吹き出しYOffset",
+							Source = "Value",
+							Expression = "(((テキスト.Output[0].DataWindow[4]-テキスト.Output[0].DataWindow[2])/テキスト.Output[0].OriginalWidth/ 2) *-1) - 0.01",
+						},
+						Width = Input { Value = 0.01, },
+						Height = Input { Value = 0.063, },
+						Angle = Input { Value = 30, },
+						Red = Input {
+							SourceOp = "Publish1",
 							Source = "Value",
 						},
-						Input = Input {
-							SourceOp = "sMerge1",
-							Source = "Output",
+						Green = Input {
+							SourceOp = "Publish2",
+							Source = "Value",
+						},
+						Blue = Input {
+							SourceOp = "Publish3",
+							Source = "Value",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 418.667, 46.4243 } },
+					ViewInfo = OperatorInfo { Pos = { 182.667, 14.6364 } },
 				},
-				["吹き出しアニメYOffset"] = BezierSpline {
+				["左吹き出しYOffset"] = BezierSpline {
 					SplineColor = { Red = 252, Green = 57, Blue = 47 },
 					CtrlWZoom = false,
 					KeyFrames = {
-						[0] = { -0.027, RH = { 1.33333333333333, -0.027 } },
-						[4] = { 0.025, LH = { 2.6284851324141, 0.0250000000000001 }, RH = { 4.72, 0.025 } },
-						[6] = { 0, LH = { 5.33333333333333, 0 } }
+						[0] = { -0.0596588, RH = { 2, -0.0596588 } },
+						[6] = { -0.012, LH = { 4.00020002285506, -0.014444200480211 }, RH = { 7.33319998476329, -0.0103705330131927 } },
+						[10] = { -0.0399110954262382, LH = { 8.66666666666667, -0.0399110954262382 } }
 					}
 				},
 				sMerge1 = sMerge {
@@ -205,48 +203,8 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 308.667, 46.4243 } },
 				},
-				["テキスト"] = TextPlus {
-					NameSet = true,
-					Inputs = {
-						Width = Input { Value = 1920, },
-						Height = Input { Value = 1080, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						StyledText = Input { Value = "アスキーアート風吹き出し!", },
-						Font = Input { Value = "cinecaption", },
-						Style = Input { Value = "Regular", },
-						Size = Input { Value = 0.056, },
-						VerticalTopCenterBottom = Input {
-							SourceOp = "テキストVAnchor",
-							Source = "Value",
-						},
-						VerticalJustificationNew = Input { Value = 3, },
-						HorizontalJustificationNew = Input { Value = 3, },
-						AdvancedFontControls = Input { Value = 1, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 230, 89.1212 } },
-				},
-				["テキストVAnchor"] = BezierSpline {
-					SplineColor = { Red = 246, Green = 26, Blue = 171 },
-					CtrlWZoom = false,
-					KeyFrames = {
-						[0] = { -0.62, RH = { 4, -0.62 } },
-						[12] = { -0.015, LH = { 8, -0.015 } }
-					}
-				},
-				MediaOut1 = MediaOut {
-					Inputs = {
-						Index = Input { Value = "0", },
-						Input = Input {
-							SourceOp = "KeyframeStretcher1",
-							Source = "Result",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 910.001, 44 } },
-				},
 				sRender1 = sRender {
 					Inputs = {
-						MotionBlur = Input { Value = 1, },
 						Width = Input { Value = 1920, },
 						Height = Input { Value = 1080, },
 						UseFrameFormatSettings = Input { Value = 1, },
@@ -284,6 +242,51 @@
 						[7] = { 0, LH = { 4.66666666666667, 0 }, RH = { 8.66666666666666, 0 }, Flags = { Linear = true } },
 						[12] = { 0.979999999999999, LH = { 10.3333333333333, 0.979999999999999 } }
 					}
+				},
+				["吹き出しアニメ"] = sTransform {
+					NameSet = true,
+					Inputs = {
+						YOffset = Input {
+							SourceOp = "吹き出しアニメYOffset",
+							Source = "Value",
+						},
+						Input = Input {
+							SourceOp = "sMerge1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 418.667, 46.4243 } },
+				},
+				["吹き出しアニメYOffset"] = BezierSpline {
+					SplineColor = { Red = 252, Green = 57, Blue = 47 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { -0.027, RH = { 3.33333333333333, -0.027 } },
+						[10] = { 0.0252, LH = { 6.56968512474558, 0.0252000000000002 }, RH = { 10.86, 0.0252 } },
+						[12] = { 0, LH = { 11.3334000110626, 2.71030210448895e-20 } }
+					}
+				},
+				KeyframeStretcher1 = KeyStretcher {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						SourceEnd = Input { Value = 72, },
+						StretchStart = Input { Value = 13, },
+						StretchEnd = Input { Value = 15, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 780.001, 44.9394 } },
+				},
+				MediaOut1 = MediaOut {
+					Inputs = {
+						Index = Input { Value = "0", },
+						Input = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 910.001, 44 } },
 				}
 			},
 		}
