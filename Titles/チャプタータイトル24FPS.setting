@@ -350,7 +350,7 @@
 						},
 						LineSpacing = Input { Value = 1.543, },
 						StyledText = Input { Value = "ここにサブタイトル\nここにサブタイトル", },
-						Font = Input { Value = "IBM Plex Sans JP", },
+						Font = Input { Value = "BIZ UDPGothic", },
 						Style = Input { Value = "Regular", },
 						Size = Input { Value = 0.0712, },
 						VerticalJustificationNew = Input { Value = 3, },
