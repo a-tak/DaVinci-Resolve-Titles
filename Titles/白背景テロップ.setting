@@ -51,132 +51,137 @@
 				}
 			},
 			ViewInfo = GroupInfo { Pos = { 0, 0 } },
-			Tools = ordered() {
-				MaskPaint1 = PaintMask {
-					CtrlWZoom = false,
-					Inputs = {
-						Filter = Input { Value = FuID { "Fast Gaussian" }, },
-						PaintMode = Input { Value = FuID { "None" }, },
-						MaskWidth = Input { Value = 1920, },
-						MaskHeight = Input { Value = 1080, },
-						PixelAspect = Input { Value = { 1, 1 }, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						ClippingMode = Input { Value = FuID { "None" }, },
-						Paint = Input {
-							SourceOp = "Rectangle1",
-							Source = "Out",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 435.647, 37.4266 } },
+	Tools = ordered() {
+		MaskPaint1 = PaintMask {
+			CtrlWZoom = false,
+			EnabledRegion = TimeRegion { { Start = 0, End = 147.9999, FrameLength = 1 } },
+			Inputs = {
+				Filter = Input { Value = FuID { "Fast Gaussian" }, },
+				PaintMode = Input { Value = FuID { "None" }, },
+				MaskWidth = Input { Value = 3840, },
+				MaskHeight = Input { Value = 2160, },
+				PixelAspect = Input { Value = { 1, 1 }, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				ClippingMode = Input { Value = FuID { "None" }, },
+				Paint = Input {
+					SourceOp = "Rectangle1",
+					Source = "Out",
 				},
-				Rectangle1 = Rectangle {
-					IsThreaded = true,
-					Brushes = {
-					},
-					ApplyModes = { "PaintApplyColor" },
-					CtrlWZoom = false,
-					Inputs = {
-						Center = Input {
-							SourceOp = "Path1",
-							Source = "Position",
-						},
-						Width = Input { Value = 1.5, },
-						Height = Input { Value = 1, },
-					},
-				},
-				Path1 = PolyPath {
-					DrawMode = "InsertAndModify",
-					CtrlWZoom = false,
-					Inputs = {
-						Displacement = Input {
-							SourceOp = "Path1Displacement",
-							Source = "Value",
-						},
-						PolyLine = Input {
-							Value = Polyline {
-								Points = {
-									{ Linear = true, LockY = true, X = -1.250312, Y = 0, RX = 0.337333331334432, RY = 0 },
-									{ Linear = true, LockY = true, X = -0.238312005996704, Y = 0, LX = -0.337333331334432, LY = 0, RX = 0, RY = 0 },
-									{ Linear = true, LockY = true, X = -0.238312005996704, Y = 0, LX = 0, LY = 0, RX = 0.496335001998901, RY = 0 },
-									{ Linear = true, LockY = true, X = 1.250693, Y = 0, LX = -0.496335001998901, LY = 0 }
-								}
-							},
-						},
-					},
-				},
-				Path1Displacement = BezierSpline {
-					SplineColor = { Red = 255, Green = 0, Blue = 255 },
-					CtrlWZoom = false,
-					KeyFrames = {
-						[0] = { 0, RH = { 8.25525407888159, 0 }, Flags = { LockedY = true } },
-						[24] = { 0.404637333393294, LH = { 24, 0.404637333393294 }, RH = { 39.7000271566604, 0.404637333393294 }, Flags = { LockedY = true } },
-						[48] = { 0.404637333393294, LH = { 43.6999761376815, 0.404637333393294 }, RH = { 65, 0.404999998573358 }, Flags = { LockedY = true } },
-						[72] = { 1, LH = { 59.6, 1 }, Flags = { LockedY = true } }
-					}
-				},
-				KeyframeStretcher1 = KeyStretcher {
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "Text1",
-							Source = "Output",
-						},
-						SourceEnd = Input { Value = 72, },
-						StretchStart = Input { Value = 25, },
-						StretchEnd = Input { Value = 47, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 646.332, 81.7161 } },
-				},
-				MediaOut1 = MediaOut {
-					Inputs = {
-						Index = Input { Value = "0", },
-						Input = Input {
-							SourceOp = "KeyframeStretcher1",
-							Source = "Result",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 756.332, 93.9394 } },
-				},
-				Text1 = TextPlus {
-					Inputs = {
-						EffectMask = Input {
-							SourceOp = "MaskPaint1",
-							Source = "Mask",
-						},
-						Width = Input { Value = 1920, },
-						Height = Input { Value = 1080, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						Center = Input { Value = { 0.043699518326461, 0.878049 }, },
-						LineSpacing = Input { Value = 1.174, },
-						SelectElement = Input { Value = 3, },
-						Select = Input { Value = 3, },
-						Enabled4 = Input { Value = 1, },
-						Red1 = Input { Value = 0, },
-						Green1 = Input { Value = 0, },
-						Blue1 = Input { Value = 0, },
-						Softness1 = Input { Value = 1, },
-						Shear1 = Input { Value = 1, },
-						Size1 = Input { Value = 1, },
-						Name4 = Input { Value = "White Border", },
-						StyledText = Input { Value = "サンプルテキスト", },
-						Font = Input { Value = "BIZ UDPGothic", },
-						Style = Input { Value = "Regular", },
-						Size = Input { Value = 0.0591, },
-						VerticalJustificationNew = Input { Value = 3, },
-						HorizontalLeftCenterRight = Input { Value = -1, },
-						HorizontalJustificationNew = Input { Value = 3, },
-						TabSpacing = Input { Value = 1, },
-						AdvancedFontControls = Input { Value = 1, },
-						Level4 = Input { Value = 0, },
-						ExtendHorizontal4 = Input { Value = 0.605, },
-						ExtendVertical4 = Input { Value = 0.401, },
-						Red4 = Input { Value = 1, },
-						Green4 = Input { Value = 1, },
-						Alpha4 = Input { Value = 0.9, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 536.332, 81.7161 } },
-				}
 			},
+			ViewInfo = OperatorInfo { Pos = { 486, 29.5606 } },
+		},
+		Rectangle1 = Rectangle {
+			IsThreaded = true,
+			Brushes = {
+			},
+			ApplyModes = { "PaintApplyColor" },
+			CtrlWZoom = false,
+			EnabledRegion = TimeRegion { { Start = 0, End = 147.9999 } },
+			Inputs = {
+				MotionBlur = Input { Value = 1, },
+				Center = Input {
+					SourceOp = "Path1",
+					Source = "Position",
+				},
+				Width = Input { Value = 1.5, },
+				Height = Input { Value = 1, },
+			},
+		},
+		Path1 = PolyPath {
+			DrawMode = "InsertAndModify",
+			Inputs = {
+				Displacement = Input {
+					SourceOp = "Path1変位",
+					Source = "Value",
+				},
+				PolyLine = Input {
+					Value = Polyline {
+						Points = {
+							{ Linear = true, LockY = true, X = -1.250312, Y = 0, RX = 0.337333331334432, RY = 0 },
+							{ Linear = true, LockY = true, X = -0.238312005996704, Y = 0, LX = -0.337333331334432, LY = 0, RX = 0, RY = 0 },
+							{ Linear = true, LockY = true, X = -0.238312005996704, Y = 0, LX = 0, LY = 0, RX = 0.496335001998901, RY = 0 },
+							{ Linear = true, LockY = true, X = 1.250693, Y = 0, LX = -0.496335001998901, LY = 0 }
+						}
+					},
+				},
+			},
+		},
+		["Path1変位"] = BezierSpline {
+			SplineColor = { Red = 255, Green = 0, Blue = 255 },
+			NameSet = true,
+			KeyFrames = {
+				[0] = { 0, RH = { 8.25525407888159, 0 }, Flags = { LockedY = true } },
+				[24] = { 0.404637333393294, LH = { 24, 0.404637333393294 }, RH = { 26.6166711927767, 0.404637333393294 }, Flags = { LockedY = true } },
+				[28] = { 0.404637333393294, LH = { 27.2833293562803, 0.404637333393294 }, RH = { 45, 0.404999998573358 }, Flags = { LockedY = true } },
+				[52] = { 1, LH = { 39.6, 1 }, Flags = { LockedY = true } }
+			}
+		},
+		Text1 = TextPlus {
+			Inputs = {
+				EffectMask = Input {
+					SourceOp = "MaskPaint1",
+					Source = "Mask",
+				},
+				GlobalOut = Input { Value = 71, },
+				Width = Input { Value = 3840, },
+				Height = Input { Value = 2160, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				Center = Input { Value = { 0.0367, 0.914049 }, },
+				LineSpacing = Input { Value = 1.174, },
+				SelectElement = Input { Value = 3, },
+				Select = Input { Value = 3, },
+				Name4 = Input { Value = "White Border", },
+				Enabled4 = Input { Value = 1, },
+				Red1 = Input { Value = 0, },
+				Green1 = Input { Value = 0, },
+				Blue1 = Input { Value = 0, },
+				Softness1 = Input { Value = 1, },
+				Shear1 = Input { Value = 1, },
+				Size1 = Input { Value = 1, },
+				StyledText = Input { Value = "サンプルテキスト", },
+				Font = Input { Value = "BIZ UDPGothic", },
+				Style = Input { Value = "Regular", },
+				Size = Input { Value = 0.0532, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalLeftCenterRight = Input { Value = -1, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				TabSpacing = Input { Value = 1, },
+				AdvancedFontControls = Input { Value = 1, },
+				Level4 = Input { Value = 0, },
+				ExtendHorizontal4 = Input { Value = 0.605, },
+				ExtendVertical4 = Input { Value = 0.401, },
+				Red4 = Input { Value = 1, },
+				Green4 = Input { Value = 1, },
+				Alpha4 = Input { Value = 0.9, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 708.667, 19.3182 } },
+		},
+		KeyframeStretcher1 = KeyStretcher {
+			EnabledRegion = TimeRegion { { Start = 0, End = 147.9999, FrameLength = 1 } },
+			Inputs = {
+				Keyframes = Input {
+					SourceOp = "Text1",
+					Source = "Output",
+				},
+				SourceEnd = Input { Value = 50, },
+				StretchStart = Input { Value = 25, },
+				StretchEnd = Input { Value = 26, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 880, 16.5 } },
+		},
+		MediaOut1 = MediaOut {
+			Inputs = {
+				Index = Input { Value = "0", },
+				Input = Input {
+					SourceOp = "KeyframeStretcher1",
+					Source = "Result",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 990, 16.5 } },
+		}
+	},
+	ActiveTool = "MaskPaint1"
 		}
 	},
 	ActiveTool = "白背景テロップ"
