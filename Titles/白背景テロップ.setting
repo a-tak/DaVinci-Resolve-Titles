@@ -52,70 +52,6 @@
 			},
 			ViewInfo = GroupInfo { Pos = { 0, 0 } },
 	Tools = ordered() {
-		Text1 = TextPlus {
-			Inputs = {
-				EffectMask = Input {
-					SourceOp = "MaskPaint1",
-					Source = "Mask",
-				},
-				GlobalOut = Input { Value = 71, },
-				Width = Input { Value = 3840, },
-				Height = Input { Value = 2160, },
-				UseFrameFormatSettings = Input { Value = 1, },
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				Center = Input { Value = { 0.0367, 0.894049 }, },
-				LineSpacing = Input { Value = 1.174, },
-				SelectElement = Input { Value = 3, },
-				Select = Input { Value = 3, },
-				Name4 = Input { Value = "White Border", },
-				Enabled4 = Input { Value = 1, },
-				Red1 = Input { Value = 0, },
-				Green1 = Input { Value = 0, },
-				Blue1 = Input { Value = 0, },
-				Softness1 = Input { Value = 1, },
-				Shear1 = Input { Value = 1, },
-				Size1 = Input { Value = 1, },
-				StyledText = Input { Value = "サンプルテキスト", },
-				Font = Input { Value = "BIZ UDPGothic", },
-				Style = Input { Value = "Regular", },
-				Size = Input { Value = 0.0532, },
-				VerticalJustificationNew = Input { Value = 3, },
-				HorizontalLeftCenterRight = Input { Value = -1, },
-				HorizontalJustificationNew = Input { Value = 3, },
-				TabSpacing = Input { Value = 1, },
-				AdvancedFontControls = Input { Value = 1, },
-				Level4 = Input { Value = 0, },
-				ExtendHorizontal4 = Input { Value = 0.605, },
-				ExtendVertical4 = Input { Value = 0.401, },
-				Red4 = Input { Value = 1, },
-				Green4 = Input { Value = 1, },
-				Alpha4 = Input { Value = 0.9, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 708.667, 19.3182 } },
-		},
-		MediaOut1 = MediaOut {
-			Inputs = {
-				Index = Input { Value = "0", },
-				Input = Input {
-					SourceOp = "KeyframeStretcher1",
-					Source = "Result",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 990, 16.5 } },
-		},
-		KeyframeStretcher1 = KeyStretcher {
-			EnabledRegion = TimeRegion { { Start = 0, End = 147.9999, FrameLength = 1 } },
-			Inputs = {
-				Keyframes = Input {
-					SourceOp = "Text1",
-					Source = "Output",
-				},
-				SourceEnd = Input { Value = 50, },
-				StretchStart = Input { Value = 25, },
-				StretchEnd = Input { Value = 26, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 880, 16.5 } },
-		},
 		MaskPaint1 = PaintMask {
 			CtrlWZoom = false,
 			EnabledRegion = TimeRegion { { Start = 0, End = 147.9999, FrameLength = 1 } },
@@ -153,7 +89,6 @@
 		},
 		Path1 = PolyPath {
 			DrawMode = "InsertAndModify",
-			CtrlWZoom = false,
 			Inputs = {
 				Displacement = Input {
 					SourceOp = "Path1変位",
@@ -173,13 +108,80 @@
 		},
 		["Path1変位"] = BezierSpline {
 			SplineColor = { Red = 255, Green = 0, Blue = 255 },
-			CtrlWZoom = false,
+			NameSet = true,
 			KeyFrames = {
 				[0] = { 0, RH = { 8.25525407888159, 0 }, Flags = { LockedY = true } },
 				[24] = { 0.404637333393294, LH = { 24, 0.404637333393294 }, RH = { 26.6166711927767, 0.404637333393294 }, Flags = { LockedY = true } },
 				[28] = { 0.404637333393294, LH = { 27.2833293562803, 0.404637333393294 }, RH = { 45, 0.404999998573358 }, Flags = { LockedY = true } },
 				[52] = { 1, LH = { 39.6, 1 }, Flags = { LockedY = true } }
 			}
+		},
+		Text1 = TextPlus {
+			Inputs = {
+				EffectMask = Input {
+					SourceOp = "MaskPaint1",
+					Source = "Mask",
+				},
+				GlobalOut = Input { Value = 71, },
+				Width = Input { Value = 3840, },
+				Height = Input { Value = 2160, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				Center = Input { Value = { 0.0367, 0.914049 }, },
+				LineSpacing = Input { Value = 1.174, },
+				SelectElement = Input { Value = 3, },
+				Select = Input { Value = 3, },
+				Name4 = Input { Value = "White Border", },
+				Enabled4 = Input { Value = 1, },
+				Red1 = Input { Value = 0, },
+				Green1 = Input { Value = 0, },
+				Blue1 = Input { Value = 0, },
+				Softness1 = Input { Value = 1, },
+				Shear1 = Input { Value = 1, },
+				Size1 = Input { Value = 1, },
+				StyledText = Input { Value = "サンプルテキスト", },
+				Font = Input { Value = "BIZ UDPGothic", },
+				Style = Input { Value = "Regular", },
+				Size = Input { Value = 0.0532, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalLeftCenterRight = Input { Value = -1, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				TabSpacing = Input { Value = 1, },
+				AdvancedFontControls = Input { Value = 1, },
+				Level4 = Input { Value = 0, },
+				ExtendHorizontal4 = Input { Value = 0.605, },
+				ExtendVertical4 = Input { Value = 0.401, },
+				Red4 = Input { Value = 1, },
+				Green4 = Input { Value = 1, },
+				Alpha4 = Input { Value = 0.9, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 708.667, 19.3182 } },
+		},
+		KeyframeStretcher1 = KeyStretcher {
+			EnabledRegion = TimeRegion { { Start = 0, End = 147.9999, FrameLength = 1 } },
+			Inputs = {
+				Keyframes = Input {
+					SourceOp = "Text1",
+					Source = "Output",
+				},
+				SourceEnd = Input { Value = 50, },
+				StretchStart = Input { Value = 25, },
+				StretchEnd = Input { Value = 26, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 880, 16.5 } },
+		},
+		MediaOut1 = MediaOut {
+			Inputs = {
+				Index = Input { Value = "0", },
+				Input = Input {
+					SourceOp = "KeyframeStretcher1",
+					Source = "Result",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 990, 16.5 } },
+		}
+	},
+	ActiveTool = "MaskPaint1"
 		}
 	},
 	ActiveTool = "白背景テロップ"
